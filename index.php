@@ -1,10 +1,9 @@
 <?php
 
-    if (!isset($_SERVER['PATH_INFO']))
-    {
-        echo "Home page";
-        exit();
-    }
+session_start();
 
-    print "The request path is : ".$_SERVER['PATH_INFO'];
-?>
+require_once('.\App\Core\initializing.php');
+
+use App\Core\App;
+
+$app = new App();
