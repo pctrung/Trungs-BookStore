@@ -92,7 +92,6 @@ class BookController extends Controller
     $output_dir = ROOT . DS . "public" . DS . "uploads" . DS . "book-images"; //Path for file upload
 
     for ($i = 1; $i <= 3; $i++) {
-
       if (isset($_FILES["Hinh$i"])) {
         if ($_FILES["Hinh$i"]['name'] != "") {
           $randomNum = time() + $i;
@@ -127,8 +126,16 @@ class BookController extends Controller
   }
   function delete($id)
   {
+    $deleteBook = $this->book->getByID($id);
+
     $result = $this->book->delete($id);
+
     if ($result === true) {
+      for ($i = 1; $i <= 3; $i++) {
+        if ($deleteBook["Hinh$i"] != "") {
+          unlink(ROOT . DS  . 'public' . DS . 'uploads' . DS . 'book-images' . DS . $deleteBook["Hinh$i"]);
+        }
+      }
       $_SESSION['alert']['success'] = true;
       $_SESSION['alert']['messages'] = "Xóa thành công";
     } else {

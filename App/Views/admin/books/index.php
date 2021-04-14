@@ -52,7 +52,7 @@
                     <td><?= $book['QuyCach'] ?></td>
                     <td><?= $book['SoLuongHang'] ?></td>
                     <td><?= $book['TenLoaiHang'] ?></td>
-                    <td><?= $book['GhiChu'] ?></td>
+                    <td><span class="d-inline-block text-truncate" style="max-width: 150px;"><?= $book['GhiChu'] ?></span></td>
                     <td><?= $book['Gia'] ?></td>
                     <td>
                       <?php if ($book['Hinh1'] != "") : ?>
@@ -60,12 +60,12 @@
                       <?php endif; ?>
                     </td>
                     <td class="project-actions text-right">
-                      <a class="btn btn-info btn-sm" href="<?= DOCUMENT_ROOT ?>/admin/book/edit/<?= $book['MSHH'] ?>">
-                        <i class="fas fa-folder">
+                      <a class="btn btn-info btn-sm mb-1" href="<?= DOCUMENT_ROOT ?>/admin/book/edit/<?= $book['MSHH'] ?>">
+                        <i class="fas fa-edit">
                         </i>
                         Sửa
                       </a>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteBookConfirm">
+                      <button type="button" class="btn btn-sm btn-danger mb-1" data-toggle="modal" data-target="#deleteBookConfirm">
                         <i class="fas fa-trash">
                         </i>
                         Xóa

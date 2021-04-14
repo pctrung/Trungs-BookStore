@@ -54,7 +54,7 @@
              </div>
              <div class=" form-group">
                <label for="GhiChu">Ghi chú</label>
-               <input type="text" id="GhiChu" name="GhiChu" class="form-control" value="<?= $data['updateBook']['GhiChu'] ?>"></input>
+               <textarea rows="8" type="textarea" id="GhiChu" name="GhiChu" class="form-control" value="<?= htmlspecialchars($data['updateBook']['GhiChu']) ?>"><?= $data['updateBook']['GhiChu'] ?></textarea>
              </div>
 
              <?php for ($i = 1; $i <= 3; $i++) : ?>
