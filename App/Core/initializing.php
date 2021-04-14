@@ -22,7 +22,6 @@ defined('DB_PASSWORD') ?:  define('DB_PASSWORD', $database['db_password']);
 
 // route constant
 $routes = require(CONF . DS . 'routes.php');
-
 defined('DEFAULT_CONTROLLER') ?: define('DEFAULT_CONTROLLER', $routes['default_controller']);
 defined('DEFAULT_ACTION') ?: define('DEFAULT_ACTION', $routes['default_action']);
 
@@ -30,3 +29,9 @@ defined('DEFAULT_ACTION') ?: define('DEFAULT_ACTION', $routes['default_action'])
 require_once(CORE . DS . "App.php");
 require_once(CORE . DS . "Controller.php");
 require_once(CORE . DS . "Database.php");
+
+//navigation constant
+$site = require(CONF . DS . 'site.php');
+defined('SITE') ?: define('SITE', $site);
+defined('DOCUMENT_ROOT') ?:  define('DOCUMENT_ROOT', SITE['document root']);
+defined('BOOK_IMAGES') ?:  define('BOOK_IMAGES', DOCUMENT_ROOT . '/public/uploads/book-images');

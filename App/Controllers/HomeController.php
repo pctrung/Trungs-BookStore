@@ -4,15 +4,15 @@ use App\Core\Controller;
 
 class HomeController extends Controller
 {
-  private $product;
+  private $book;
 
   function __construct()
   {
-    $this->product =  $this->model("ProductModel");
+    $this->book =  $this->model("BookModel");
   }
   function index()
   {
-    $data = $this->product->all();
+    $data = $this->book->all();
     $this->view("client", "home" . DS . "index", $data);
   }
 }

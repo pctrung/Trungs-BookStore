@@ -1,3 +1,3 @@
-<footer>
-  <h2>This is admin footer</h2>
+<footer class="main-footer">
+  <strong>B1809424 - Phạm Chí Trung - Đồ án Lập trình web.</strong>
 </footer>
