@@ -9,7 +9,7 @@ return [
     'admin' => [
       'book' => [
         'title' => 'Sách',
-        'name'  => 'book',
+        'name'  => 'books',
         'icon'  => 'fas fa-book',
         'link'  => $documentRoot . '/admin/book/index',
         'subitems' => [
@@ -21,9 +21,9 @@ return [
           ],
           [
             'title' => 'Loại sách',
-            'name'  => 'book-kind',
+            'name'  => 'bookkind',
             'icon'  => 'fas fa-swatchbook',
-            'link'  => $documentRoot . '/admin/book-kind/index',
+            'link'  => $documentRoot . '/admin/bookkind/index',
           ],
         ],
       ],

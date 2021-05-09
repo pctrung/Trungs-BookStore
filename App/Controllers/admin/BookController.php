@@ -25,15 +25,21 @@ class BookController extends Controller
   function edit($id)
   {
     $data['updateBook'] = $this->book->getByID($id);
+
+    if (!($data['updateBook'])) {
+      header("Location: " . DOCUMENT_ROOT . "/admin/book");
+    }
+
     $data['bookKind'] = $this->bookKind->all();
     $this->view("admin", "books/edit", $data);
   }
   function store()
   {
-    $data = [];
-    if (isset($_POST)) {
-      $data = $_POST;
+    if (!isset($_POST)) {
+      header("Location: " . DOCUMENT_ROOT . "/admin");
     }
+
+    $data = $_POST;
 
     $data['Gia'] = intval($_POST['Gia']);
     $data['SoLuongHang'] = intval($_POST['SoLuongHang']);
@@ -66,7 +72,7 @@ class BookController extends Controller
       $_SESSION['alert']['messages'] = "Thêm sách thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = $result;
+      $_SESSION['alert']['messages'] = "Thêm sách khoô1wqe thành công";
     }
     header("Location: " . DOCUMENT_ROOT . "/admin/book/create");
   }
@@ -74,9 +80,8 @@ class BookController extends Controller
   {
 
     $updateBook = $this->book->getByID($id);
-
-    if (!isset($_POST)) {
-      header("Location: " . DOCUMENT_ROOT . "/admin");
+    if (!$updateBook || !isset($_POST)) {
+      header("Location: " . DOCUMENT_ROOT . "/admin/book");
     }
     $data = $_POST;
 
