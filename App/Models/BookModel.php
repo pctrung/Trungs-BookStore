@@ -12,7 +12,7 @@ class BookModel extends Database
     if ($result->num_rows > 0) {
       return $result->fetch_all(MYSQLI_ASSOC);
     } else {
-      return "0 results";
+      return false;
     }
   }
 
@@ -28,7 +28,7 @@ class BookModel extends Database
     if ($result->num_rows > 0) {
       return $result->fetch_assoc();
     } else {
-      return "0 result";
+      return false;
     }
   }
 
@@ -55,8 +55,6 @@ class BookModel extends Database
     $isSuccess = $stmt->execute();
     if (!$isSuccess) {
       return $stmt->error;
-    } else if ($stmt->affected_rows <= 0) {
-      return "Cập nhật không thành công";
     }
     return true;
   }
