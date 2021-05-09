@@ -19,7 +19,7 @@
  <!-- Main content -->
  <section class="content">
    <?php require_once(VIEW . DS . "shared/noti.php") ?>
-   <form action="<?= DOCUMENT_ROOT ?>/admin/staff/update/<?= $data['updateStaff']['MSNV'] ?>" method="post" enctype="multipart/form-data">
+   <form onsubmit="return formValidate();" action="<?= DOCUMENT_ROOT ?>/admin/staff/store" method="post" enctype="multipart/form-data">
      <div class="row">
        <div class="col-md-12">
          <div class="card card-primary">
@@ -29,13 +29,12 @@
            <div class="card-body">
              <div class="form-group">
                <label for="HoTenNV">Tên nhân viên</label>
-               <input type="text" id="HoTenNV" name="HoTenNV" class="form-control"></input>
+               <input required type="text" id="HoTenNV" name="HoTenNV" class="form-control"></input>
              </div>
              <div class="form-group">
                <label for="ChucVu">Chức vụ</label>
-               <select class="form-control custom-select" name="ChucVu" id="ChucVu">
-
-                 <option disabled selected>Chọn chức vụ</option>
+               <select required class="form-control custom-select" name="ChucVu" id="ChucVu">
+                 <option disabled selected value="">Chọn chức vụ</option>
                  <option value="Chủ tịch">Chủ tịch</option>
                  <option value="Giám đốc">Giám đốc</option>
                  <option value="Nhân viên bán hàng">Nhân viên bán hàng</option>
@@ -46,11 +45,12 @@
              </div>
              <div class="form-group">
                <label for="DiaChi">Địa chỉ</label>
-               <input type="text" id="DiaChi" name="DiaChi" class="form-control"></input>
+               <input required type="text" id="DiaChi" name="DiaChi" class="form-control"></input>
              </div>
              <div class="form-group">
                <label for="SoDienThoai">Số điện thoại</label>
-               <input type="tel" id="SoDienThoai" name="SoDienThoai" class="form-control"></input>
+               <input required type="number" id="SoDienThoai" name="SoDienThoai" class="form-control" onchange="phoneValidate(this);"></input>
+               <div class="text-danger mt-2" id="phoneValidateMessage"></div>
              </div>
              <div class=" row">
                <div class="col-12">

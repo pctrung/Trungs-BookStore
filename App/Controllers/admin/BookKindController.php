@@ -42,7 +42,7 @@ class BookKindController extends Controller
       $_SESSION['alert']['messages'] = "Thêm loại sách thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = "Thêm loại sách không thành công";
+      $_SESSION['alert']['messages'] = $result;
     }
     header("Location: " . DOCUMENT_ROOT . "/admin/bookkind/create");
   }
@@ -62,7 +62,7 @@ class BookKindController extends Controller
       $_SESSION['alert']['messages'] = "Cập nhật loại sách thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = "Cập nhật loại sách không thành công";
+      $_SESSION['alert']['messages'] = $result;
     }
     header("Location: " . DOCUMENT_ROOT . "/admin/bookkind/edit/$id");
   }
@@ -76,7 +76,7 @@ class BookKindController extends Controller
       $_SESSION['alert']['messages'] = "Xóa loại sách thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = "Xóa loại sách không thành công";
+      $_SESSION['alert']['messages'] = $result;
     }
 
     header("Location:" . DOCUMENT_ROOT . "/admin/bookkind/index");

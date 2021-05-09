@@ -19,7 +19,7 @@
  <!-- Main content -->
  <section class="content">
    <?php require_once(VIEW . DS . "shared/noti.php") ?>
-   <form action="<?= DOCUMENT_ROOT ?>/admin/staff/update/<?= $data['updateStaff']['MSNV'] ?>" method="post" enctype="multipart/form-data">
+   <form onsubmit="return formValidate();" action="<?= DOCUMENT_ROOT ?>/admin/staff/update/<?= $data['updateStaff']['MSNV'] ?>" method="post" enctype="multipart/form-data">
      <div class="row">
        <div class="col-md-12">
          <div class="card card-primary">
@@ -34,11 +34,11 @@
              </div>
              <div class="form-group">
                <label for="HoTenNV">Tên nhân viên</label>
-               <input type="text" id="HoTenNV" name="HoTenNV" class="form-control" value="<?= $data['updateStaff']['HoTenNV'] ?>"></input>
+               <input required type="text" id="HoTenNV" name="HoTenNV" class="form-control" value="<?= $data['updateStaff']['HoTenNV'] ?>"></input>
              </div>
              <div class="form-group">
                <label for="ChucVu">Chức vụ</label>
-               <select class="form-control custom-select" name="ChucVu" id="ChucVu">
+               <select required class="form-control custom-select" name="ChucVu" id="ChucVu">
                  <option <?= $data['updateStaff']['ChucVu'] == "Chủ tịch" ? "selected" : "" ?> value="Chủ tịch">Chủ tịch</option>
                  <option <?= $data['updateStaff']['ChucVu'] == "Giám đốc" ? "selected" : "" ?> value="Giám đốc">Giám đốc</option>
                  <option <?= $data['updateStaff']['ChucVu'] == "Nhân viên bán hàng" ? "selected" : "" ?> value="Nhân viên bán hàng">Nhân viên bán hàng</option>
@@ -49,11 +49,12 @@
              </div>
              <div class="form-group">
                <label for="DiaChi">Địa chỉ</label>
-               <input type="text" id="DiaChi" name="DiaChi" class="form-control" value="<?= $data['updateStaff']['DiaChi'] ?>"></input>
+               <input required type="text" id="DiaChi" name="DiaChi" class="form-control" value="<?= $data['updateStaff']['DiaChi'] ?>"></input>
              </div>
              <div class="form-group">
                <label for="SoDienThoai">Số điện thoại</label>
-               <input type="tel" id="SoDienThoai" name="SoDienThoai" class="form-control" value="<?= $data['updateStaff']['SoDienThoai'] ?>"></input>
+               <input required type="tel" id="SoDienThoai" name="SoDienThoai" class="form-control" value="<?= $data['updateStaff']['SoDienThoai'] ?>" onchange="phoneValidate(this);"></input>
+               <div class="text-danger mt-2" id="phoneValidateMessage"></div>
              </div>
              <div class=" row">
                <div class="col-12">

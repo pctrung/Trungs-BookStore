@@ -46,11 +46,11 @@
              </div>
              <div class=" form-group">
                <label for="Gia">Giá Tiền</label>
-               <input required type="text" id="Gia" name="Gia" class="form-control" value="<?= $data['updateBook']['Gia'] ?>"></input>
+               <input required type="number" id="Gia" name="Gia" class="form-control" value="<?= $data['updateBook']['Gia'] ?>"></input>
              </div>
              <div class=" form-group">
                <label for="SoLuongHang">Số Lượng Hàng</label>
-               <input required type="text" id="SoLuongHang" name="SoLuongHang" class="form-control" value="<?= $data['updateBook']['SoLuongHang'] ?>"></input>
+               <input required type="number" id="SoLuongHang" name="SoLuongHang" class="form-control" value="<?= $data['updateBook']['SoLuongHang'] ?>"></input>
              </div>
              <div class=" form-group">
                <label for="GhiChu">Ghi chú</label>

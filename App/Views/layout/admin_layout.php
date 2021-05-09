@@ -23,8 +23,6 @@
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -40,6 +38,9 @@
 
     <?php require_once(VIEW . DS . "includes/admin/footer.php") ?>
   </div>
+
+  <!-- My script -->
+  <script src="<?= DOCUMENT_ROOT ?>/public/admin/js/validate.js"></script>
 
   <!-- jQuery -->
   <script src="<?= DOCUMENT_ROOT ?>/public/admin/plugins/jquery/jquery.min.js"></script>

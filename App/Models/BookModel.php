@@ -4,6 +4,8 @@ use App\Core\Database;
 
 class BookModel extends Database
 {
+  private $table = "HANGHOA";
+  private $primaryKey = "MSHH";
   function all()
   {
     $sql = "SELECT * FROM view_DanhSachHangHoa";
@@ -34,7 +36,7 @@ class BookModel extends Database
 
   function store($data)
   {
-    $stmt = $this->db->prepare("INSERT INTO HANGHOA (TenHH, QuyCach, Gia, SoLuongHang, MaLoaiHang, GhiChu, Hinh1, Hinh2, Hinh3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $this->db->prepare("INSERT INTO $this->table (TenHH, QuyCach, Gia, SoLuongHang, MaLoaiHang, GhiChu, Hinh1, Hinh2, Hinh3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param("ssiiissss", $data['TenHH'], $data['QuyCach'], $data['Gia'], $data['SoLuongHang'], $data['MaLoaiHang'], $data['GhiChu'], $data['Hinh1'], $data['Hinh2'], $data['Hinh3']);
 
@@ -42,19 +44,20 @@ class BookModel extends Database
     if (!$isSuccess) {
       return $stmt->error;
     } else if ($stmt->affected_rows <= 0) {
-      return "Thêm không thành công";
+      return "Thêm sách không thành công";
     }
     return true;
   }
   function update($data)
   {
-    $stmt = $this->db->prepare("UPDATE HANGHOA SET TenHH = ?, QuyCach = ?, Gia = ?, SoLuongHang = ?, MaLoaiHang = ?, GhiChu = ?, Hinh1 = ?, Hinh2 = ?, Hinh3 = ? WHERE MSHH = ?");
+    $stmt = $this->db->prepare("UPDATE $this->table SET TenHH = ?, QuyCach = ?, Gia = ?, SoLuongHang = ?, MaLoaiHang = ?, GhiChu = ?, Hinh1 = ?, Hinh2 = ?, Hinh3 = ? WHERE MSHH = ?");
 
     $stmt->bind_param("ssiiissssi", $data['TenHH'], $data['QuyCach'], $data['Gia'], $data['SoLuongHang'], $data['MaLoaiHang'], $data['GhiChu'], $data['Hinh1'], $data['Hinh2'], $data['Hinh3'], $data['MSHH']);
-
     $isSuccess = $stmt->execute();
     if (!$isSuccess) {
       return $stmt->error;
+    } else if ($stmt->affected_rows <= 0) {
+      return "Không có sự thay đổi";
     }
     return true;
   }
@@ -63,7 +66,7 @@ class BookModel extends Database
   {
     $id = intval($id);
 
-    $stmt = $this->db->prepare("DELETE FROM HANGHOA WHERE MSHH = ?");
+    $stmt = $this->db->prepare("DELETE FROM $this->table WHERE MSHH = ?");
     $stmt->bind_param("i", $id);
     $isSuccess = $stmt->execute();
 
@@ -80,7 +83,7 @@ class BookModel extends Database
   // {
   //   $startNumber = ($currentPage - 1) * $limit;
 
-  //   $stmt = $this->db->prepare("SELECT * FROM HANGHOA LIMIT ?, ?");
+  //   $stmt = $this->db->prepare("SELECT * FROM $this->table LIMIT ?, ?");
   //   $stmt->bind_param("ii", $startNumber, $limit);
   //   $stmt->execute();
 

@@ -24,14 +24,14 @@ class StaffController extends Controller
   {
     $data['updateStaff'] = $this->staff->getByID($id);
     if (!($data['updateStaff'])) {
-      header("Location: " . DOCUMENT_ROOT . "/admin/staffs/index");
+      header("Location: " . DOCUMENT_ROOT . "/admin/staff/index");
     }
     $this->view("admin", "staffs/edit", $data);
   }
   function store()
   {
     if (!isset($_POST)) {
-      header("Location: " . DOCUMENT_ROOT . "/admin/staffs/index");
+      header("Location: " . DOCUMENT_ROOT . "/admin/staff/index");
     }
     $data = $_POST;
 
@@ -42,14 +42,14 @@ class StaffController extends Controller
       $_SESSION['alert']['messages'] = "Thêm nhân viên thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = "Thêm nhân viên không thành công";
+      $_SESSION['alert']['messages'] = $result;
     }
-    header("Location: " . DOCUMENT_ROOT . "/admin/staffs/create");
+    header("Location: " . DOCUMENT_ROOT . "/admin/staff/create");
   }
   function update($id)
   {
     if (!isset($_POST)) {
-      header("Location: " . DOCUMENT_ROOT . "/admin/staffs/index");
+      header("Location: " . DOCUMENT_ROOT . "/admin/staff/index");
     }
 
     $data = $_POST;
@@ -62,9 +62,9 @@ class StaffController extends Controller
       $_SESSION['alert']['messages'] = "Cập nhật nhân viên thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = "Cập nhật nhân viên không thành công";
+      $_SESSION['alert']['messages'] = $result;
     }
-    header("Location: " . DOCUMENT_ROOT . "/admin/staffs/edit/$id");
+    header("Location: " . DOCUMENT_ROOT . "/admin/staff/edit/$id");
   }
   function delete($id)
   {
@@ -76,9 +76,9 @@ class StaffController extends Controller
       $_SESSION['alert']['messages'] = "Xóa nhân viên thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = "Xóa nhân viên không thành công";
+      $_SESSION['alert']['messages'] = $result;
     }
 
-    header("Location:" . DOCUMENT_ROOT . "/admin/staffs/index");
+    header("Location:" . DOCUMENT_ROOT . "/admin/staff/index");
   }
 }

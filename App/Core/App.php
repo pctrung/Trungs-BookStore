@@ -51,7 +51,7 @@ class App
       $this->controller = new $this->controller;
       // assign action
 
-      if (method_exists($this->controller, $url[1])) {
+      if (isset($url[1]) && method_exists($this->controller, $url[1])) {
         $this->action = $url[1];
         $GLOBALS['currentAction'] = $url[1];
         unset($url[1]);

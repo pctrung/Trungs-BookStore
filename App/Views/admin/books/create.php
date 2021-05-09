@@ -30,7 +30,7 @@
              <div class="form-group">
                <label for="MaLoaiHang">Loại sách</label>
                <select required id="MaLoaiHang" name="MaLoaiHang" class="form-control custom-select">
-                 <option disable selected>Select one</option>
+                 <option disable selected value="">Select one</option>
                  <?php foreach ($data['bookKind'] as $key => $bookKind) : ?>
                    <option value="<?= $bookKind['MaLoaiHang'] ?>"><?= $bookKind['TenLoaiHang'] ?></option>;
                  <?php endforeach ?>
@@ -46,11 +46,11 @@
              </div>
              <div class="form-group">
                <label for="Gia">Giá Tiền</label>
-               <input required type="text" id="Gia" name="Gia" class="form-control"></input>
+               <input required type="number" id="Gia" name="Gia" class="form-control"></input>
              </div>
              <div class="form-group">
                <label for="SoLuongHang">Số Lượng Hàng</label>
-               <input required type="text" id="SoLuongHang" name="SoLuongHang" class="form-control"></input>
+               <input required type="number" id="SoLuongHang" name="SoLuongHang" class="form-control"></input>
              </div>
              <div class="form-group">
                <label for="GhiChu">Ghi chú</label>

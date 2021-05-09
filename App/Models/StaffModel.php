@@ -4,9 +4,11 @@ use App\Core\Database;
 
 class StaffModel extends Database
 {
+  private $table = "NHANVIEN";
+  private $primaryKey = "MSNV";
   function all()
   {
-    $sql = "SELECT * FROM NHANVIEN";
+    $sql = "SELECT * FROM $this->table";
     $result = $this->db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -18,7 +20,7 @@ class StaffModel extends Database
   function getByID($id)
   {
     $id = intval($id);
-    $stmt = $this->db->prepare("SELECT * FROM NHANVIEN WHERE MSNV = ?");
+    $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE MSNV = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
@@ -31,49 +33,50 @@ class StaffModel extends Database
     }
   }
 
-  // function store($data)
-  // {
-  //   $stmt = $this->db->prepare("INSERT INTO LOAIHANGHOA (TenLoaiHang) VALUES (?)");
+  function store($data)
+  {
+    $stmt = $this->db->prepare("INSERT INTO $this->table (HoTenNV, ChucVu, DiaChi, SoDienThoai) VALUES (?, ?, ?, ?)");
 
-  //   $stmt->bind_param("s", $data['TenLoaiHang']);
+    $stmt->bind_param("ssss", $data['HoTenNV'], $data['ChucVu'], $data['DiaChi'], $data['SoDienThoai']);
 
-  //   $isSuccess = $stmt->execute();
-  //   if (!$isSuccess) {
-  //     return $stmt->error;
-  //   } else if ($stmt->affected_rows <= 0) {
-  //     return "Thêm không thành công";
-  //   }
-  //   return true;
-  // }
-  // function update($data)
-  // {
-  //   $stmt = $this->db->prepare("UPDATE LOAIHANGHOA SET TenLoaiHang = ? WHERE MaLoaiHang = ?");
+    $isSuccess = $stmt->execute();
 
-  //   $stmt->bind_param("si", $data['TenLoaiHang'], $data['MaLoaiHang']);
+    if (!$isSuccess) {
+      return $stmt->error;
+    } else if ($stmt->affected_rows <= 0) {
+      return "Thêm nhân viên không thành công";
+    }
+    return true;
+  }
+  function update($data)
+  {
+    $stmt = $this->db->prepare("UPDATE $this->table SET HoTenNV = ?, ChucVu = ?, DiaChi = ?, SoDienThoai = ? WHERE MSNV = ?");
 
-  //   $isSuccess = $stmt->execute();
-  //   if (!$isSuccess) {
-  //     return $stmt->error;
-  //   } else if ($stmt->affected_rows <= 0) {
-  //     return "Cập nhật không thành công";
-  //   }
-  //   return true;
-  // }
+    $stmt->bind_param("ssssi", $data['HoTenNV'], $data['ChucVu'], $data['DiaChi'], $data['SoDienThoai'], $data['MSNV']);
 
-  // function delete($id)
-  // {
-  //   $id = intval($id);
+    $isSuccess = $stmt->execute();
+    if (!$isSuccess) {
+      return $stmt->error;
+    } else if ($stmt->affected_rows <= 0) {
+      return "Không có sự thay đổi";
+    }
+    return true;
+  }
 
-  //   $stmt = $this->db->prepare("DELETE FROM LOAIHANGHOA WHERE MaLoaiHang = ?");
-  //   $stmt->bind_param("i", $id);
-  //   $isSuccess = $stmt->execute();
+  function delete($id)
+  {
+    $id = intval($id);
 
-  //   if (!$isSuccess) {
-  //     return $stmt->error;
-  //   } else if ($stmt->affected_rows <= 0) {
-  //     return "Không tồn tại sách ID: $id";
-  //   }
+    $stmt = $this->db->prepare("DELETE FROM $this->table WHERE MSNV = ?");
+    $stmt->bind_param("i", $id);
+    $isSuccess = $stmt->execute();
 
-  //   return true;
-  // }
+    if (!$isSuccess) {
+      return $stmt->error;
+    } else if ($stmt->affected_rows <= 0) {
+      return "Không tồn tại nhân viên ID: $id";
+    }
+
+    return true;
+  }
 }

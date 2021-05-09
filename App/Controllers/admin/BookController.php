@@ -72,7 +72,7 @@ class BookController extends Controller
       $_SESSION['alert']['messages'] = "Thêm sách thành công";
     } else {
       $_SESSION['alert']['success'] = false;
-      $_SESSION['alert']['messages'] = "Thêm sách khoô1wqe thành công";
+      $_SESSION['alert']['messages'] = $result;
     }
     header("Location: " . DOCUMENT_ROOT . "/admin/book/create");
   }

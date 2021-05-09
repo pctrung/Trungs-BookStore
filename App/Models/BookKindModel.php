@@ -4,9 +4,11 @@ use App\Core\Database;
 
 class BookKindModel extends Database
 {
+  private $table = "LOAIHANGHOA";
+  private $primaryKey = "MSHH";
   function all()
   {
-    $sql = "SELECT * FROM LOAIHANGHOA";
+    $sql = "SELECT * FROM $this->table";
     $result = $this->db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -18,7 +20,7 @@ class BookKindModel extends Database
   function getByID($id)
   {
     $id = intval($id);
-    $stmt = $this->db->prepare("SELECT * FROM LOAIHANGHOA WHERE MaLoaiHang = ?");
+    $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE MaLoaiHang = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
@@ -33,7 +35,7 @@ class BookKindModel extends Database
 
   function store($data)
   {
-    $stmt = $this->db->prepare("INSERT INTO LOAIHANGHOA (TenLoaiHang) VALUES (?)");
+    $stmt = $this->db->prepare("INSERT INTO $this->table (TenLoaiHang) VALUES (?)");
 
     $stmt->bind_param("s", $data['TenLoaiHang']);
 
@@ -41,13 +43,13 @@ class BookKindModel extends Database
     if (!$isSuccess) {
       return $stmt->error;
     } else if ($stmt->affected_rows <= 0) {
-      return "Thêm không thành công";
+      return "Thêm loại sách không thành công";
     }
     return true;
   }
   function update($data)
   {
-    $stmt = $this->db->prepare("UPDATE LOAIHANGHOA SET TenLoaiHang = ? WHERE MaLoaiHang = ?");
+    $stmt = $this->db->prepare("UPDATE $this->table SET TenLoaiHang = ? WHERE MaLoaiHang = ?");
 
     $stmt->bind_param("si", $data['TenLoaiHang'], $data['MaLoaiHang']);
 
@@ -55,7 +57,7 @@ class BookKindModel extends Database
     if (!$isSuccess) {
       return $stmt->error;
     } else if ($stmt->affected_rows <= 0) {
-      return "Cập nhật không thành công";
+      return "Không có sự thay đổi";
     }
     return true;
   }
@@ -64,7 +66,7 @@ class BookKindModel extends Database
   {
     $id = intval($id);
 
-    $stmt = $this->db->prepare("DELETE FROM LOAIHANGHOA WHERE MaLoaiHang = ?");
+    $stmt = $this->db->prepare("DELETE FROM $this->table WHERE MaLoaiHang = ?");
     $stmt->bind_param("i", $id);
     $isSuccess = $stmt->execute();
 
