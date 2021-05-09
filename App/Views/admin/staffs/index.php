@@ -3,12 +3,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Quản lý sách</h1>
+        <h1>Quản lý nhân viên</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="<?= DOCUMENT_ROOT ?>/admin/home">Trang chủ</a></li>
-          <li class="breadcrumb-item active">Quản lý sách</li>
+          <li class="breadcrumb-item active">Quản lý nhân viên</li>
         </ol>
       </div>
     </div>
@@ -25,52 +25,41 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header d-flex align-items-center">
-            <h3 class="card-title">Tất cả sách</h3>
-            <a href="<?= DOCUMENT_ROOT ?>/admin/book/create" class="btn btn-primary ml-auto">Thêm sách</a>
+            <h3 class="card-title">Tất cả nhân viên</h3>
+            <a href="<?= DOCUMENT_ROOT ?>/admin/staff/create" class="btn btn-primary ml-auto">Thêm nhân viên</a>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <table id="main-table" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>Mã</th>
-                  <th>Tên sách</th>
-                  <th>Quy Cách</th>
-                  <th>Số lượng tồn</th>
-                  <th>Loại sách</th>
-                  <th>Ghi chú</th>
-                  <th>Giá</th>
-                  <th>Ảnh bìa</th>
+                  <th>Mã nhân viên</th>
+                  <th>Tên nhân viên</th>
+                  <th>Chức vụ</th>
+                  <th>Địa chỉ</th>
+                  <th>Số điện thoại</th>
                   <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($data as $key => $book) : ?>
+                <?php foreach ($data as $key => $staff) : ?>
                   <tr>
-                    <td><?= $book['MSHH'] ?></td>
-                    <td><?= $book['TenHH'] ?></td>
-                    <td><?= $book['QuyCach'] ?></td>
-                    <td><?= $book['SoLuongHang'] ?></td>
-                    <td><?= $book['TenLoaiHang'] ?></td>
-                    <td><span class="d-inline-block text-truncate" style="max-width: 150px;"><?= $book['GhiChu'] ?></span></td>
-                    <td><?= $book['Gia'] ?></td>
-                    <td>
-                      <?php if ($book['Hinh1'] != "") : ?>
-                        <img src="<?= BOOK_IMAGES . '/' . $book['Hinh1'] ?>" class="my-admin-book-thumbnail rounded mx-auto d-block" alt="Ảnh Bìa <?= $book['MSHH'] ?>">
-                      <?php endif; ?>
-                    </td>
-                    <td class="project-actions text-right d-flex flex-column d-none d-md-block">
-                      <a class="btn btn-info btn-sm mb-1 w-100" href="<?= DOCUMENT_ROOT ?>/admin/book/edit/<?= $book['MSHH'] ?>">
+                    <td><?= $staff['MSNV'] ?></td>
+                    <td><?= $staff['HoTenNV'] ?></td>
+                    <td><?= $staff['ChucVu'] ?></td>
+                    <td><?= $staff['DiaChi'] ?></td>
+                    <td><?= $staff['SoDienThoai'] ?></td>
+                    <td class="project-actions text-right">
+                      <a class="btn btn-info btn-sm mb-1" href="<?= DOCUMENT_ROOT ?>/admin/staff/edit/<?= $staff['MSNV'] ?>">
                         <i class="fas fa-edit">
                         </i>
                         Sửa
                       </a>
-                      <button type="button" class="btn btn-sm btn-danger mb-1 w-100" data-toggle="modal" data-target="#deleteBookConfirm<?= $key ?>">
+                      <button type="button" class="btn btn-sm btn-danger mb-1" data-toggle="modal" data-target="#deleteBookConfirm<?= $key ?>">
                         <i class="fas fa-trash">
                         </i>
                         Xóa
                       </button>
-
                       <!-- Modal -->
                       <div class="modal fade" id="deleteBookConfirm<?= $key ?>" tabindex="-1" role="dialog" aria-labelledby="deleteBookConfirmTitle<?= $key ?>" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -82,11 +71,11 @@
                               </button>
                             </div>
                             <div class="modal-body text-left">
-                              Xóa quyển sách <?= $book['TenHH'] ?>?
+                              Xóa nhân viên <?= $staff['HoTenNV'] ?>?
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                              <a href="<?= DOCUMENT_ROOT ?>/admin/book/delete/<?= $book['MSHH'] ?>" class="btn btn-danger">Xóa</a>
+                              <a href="<?= DOCUMENT_ROOT ?>/admin/staff/delete/<?= $staff['MSNV'] ?>" class="btn btn-danger">Xóa</a>
                             </div>
                           </div>
                         </div>
