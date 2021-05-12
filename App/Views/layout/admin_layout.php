@@ -6,19 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Admin</title>
+  <title>Trung's BookStore</title>
 
+  <link rel="icon" href="<?= DOCUMENT_ROOT ?>/public/img/icon.png">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/css/my-style.css">
-
-  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/css/docs.css">
-  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/css/highlighter.css">
-  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/css/adminlte.css">
+  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/css/adminpage.css">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/plugins/fontawesome-free/css/all.min.css">
+
   <!-- DataTables -->
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -72,6 +71,17 @@
         "autoWidth": false,
         "buttons": ["copy", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#main-table_wrapper .col-md-6:eq(0)');
+    });
+    $(function() {
+      $("#order-table").DataTable({
+        "order": [
+          [0, "desc"]
+        ],
+        "responsive": true,
+        "lengthChange": true,
+        "autoWidth": false,
+        "buttons": ["copy", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#order-table_wrapper .col-md-6:eq(0)');
     });
   </script>
 

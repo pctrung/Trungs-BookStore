@@ -24,3 +24,16 @@ function phoneValidate() {
   phoneValidateMessage.innerText = "";
   return true;
 }
+
+function orderValidate() {
+  if (document.getElementById("NgayDH") && document.getElementById("NgayGH")) {
+    let ngayDH = new Date(document.getElementById("NgayDH").value);
+    let ngayGH = new Date(document.getElementById("NgayGH").value);
+    if (ngayGH < ngayDH) {
+      document.getElementById("dateMessage").innerText =
+        "Ngày giao hàng không được nhỏ hơn ngày đặt hàng!";
+      return false;
+    }
+  }
+  return true;
+}

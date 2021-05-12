@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="<?= DOCUMENT_ROOT ?>/admin/home" class="brand-link">
-    <img src="<?= DOCUMENT_ROOT ?>/public/admin/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="<?= DOCUMENT_ROOT ?>/public/admin/img/AdminLogo.png" alt="Admin Logo" class="brand-image  elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">Book Store</span>
   </a>
 
