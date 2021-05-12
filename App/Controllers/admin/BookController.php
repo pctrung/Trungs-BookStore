@@ -6,12 +6,15 @@ class BookController extends Controller
 {
   private $book;
   private $bookKind;
+  private $order;
 
   function __construct()
   {
     $this->book = $this->model("BookModel");
     $this->bookKind = $this->model("BookKindModel");
+    $this->order = $this->model("OrderModel");
   }
+
   function index()
   {
     $data = $this->book->all();
@@ -149,5 +152,29 @@ class BookController extends Controller
     }
 
     header("Location:" . DOCUMENT_ROOT . "/admin/book/index");
+  }
+  // API
+  function getByIDJSON($id, $orderID = "")
+  {
+    $data = $this->book->getByID($id);
+
+    if ($orderID != "") {
+      $orderData = $this->order->getByID($orderID);
+      if ($orderData) {
+        $giaDatHang = "";
+        $giamGia = "";
+
+        foreach ($orderData['DonHang'] as $key => $order) {
+          if ($order['MSHH'] == $id) {
+            $giaDatHang = $order['GiaDatHang'];
+            $giamGia = $order['GiamGia'];
+            break;
+          }
+        }
+        $data['GiaDatHang'] =  $giaDatHang;
+        $data['GiamGia'] = $giamGia;
+      }
+    }
+    echo json_encode($data);
   }
 }

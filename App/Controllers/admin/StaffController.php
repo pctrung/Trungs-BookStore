@@ -81,4 +81,10 @@ class StaffController extends Controller
 
     header("Location:" . DOCUMENT_ROOT . "/admin/staff/index");
   }
+
+  function getByIDJSON($id)
+  {
+    $data = $this->staff->getByID($id);
+    echo json_encode($data);
+  }
 }

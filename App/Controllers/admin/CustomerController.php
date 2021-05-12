@@ -82,4 +82,11 @@ class CustomerController extends Controller
 
     header("Location:" . DOCUMENT_ROOT . "/admin/customer/index");
   }
+
+  // for ajax
+  function getByIDJSON($id)
+  {
+    $data = $this->customer->getByID($id);
+    echo json_encode($data);
+  }
 }
