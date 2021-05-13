@@ -29,21 +29,21 @@
            <div class="card-body">
              <div class="form-group">
                <label for="MSNV">Mã nhân viên</label>
-               <input oninput="onChangeStaffID()" type="text" id="staffIDInput" name="MSNV" class="form-control"></input>
+               <input required oninput="onChangeStaffID()" type="text" id="staffIDInput" name="MSNV" class="form-control"></input>
                <div id="staffDetail"></div>
              </div>
              <div class="form-group">
                <label for="MSKH">Mã khách hàng</label>
-               <input oninput="onChangeCustomerID()" required type="text" id="cusomterIDInput" name="MSKH" class="form-control"></input>
-               <div id="cusomterDetail"></div>
+               <input required oninput="onChangeCustomerID()" type="text" id="cusomterIDInput" name="MSKH" class="form-control"></input>
+               <div id="customerDetail"></div>
              </div>
              <div class="form-group">
                <label for="NgayDH">Ngày đặt hàng</label>
-               <input required type="date" id="NgayDH" name="NgayDH" class="form-control"></input>
+               <input required type="date" id="NgayDH" name="NgayDH" class="form-control" onchange="orderValidate()"></input>
              </div>
              <div class="form-group">
                <label for="NgayGH">Ngày giao hàng</label>
-               <input required type="date" id="NgayGH" name="NgayGH" class="form-control"></input>
+               <input required type="date" id="NgayGH" name="NgayGH" class="form-control" onchange="orderValidate()"></input>
                <div id="dateMessage" class="text-red mt-1"></div>
              </div>
              <div class=" form-group">
@@ -181,13 +181,13 @@
    }
 
    function emptyCustomerID() {
-     let message = document.getElementById('cusomterDetail');
+     let message = document.getElementById('customerDetail');
      message.innerHTML = "";
    }
 
    // hàm xử lý khi không tìm thấy mã khách hàng
    function customerNotFound(customerIDInput) {
-     let message = document.getElementById('cusomterDetail');
+     let message = document.getElementById('customerDetail');
 
      message.classList = "text-danger mt-1";
      message.innerHTML = "Không tồn tại mã khách hàng: " + customerIDInput.value;
@@ -195,7 +195,7 @@
 
    // xử lý khi tìm thấy mã khách hàng
    function customerFound(customerIDInput, data) {
-     let message = document.getElementById('cusomterDetail');
+     let message = document.getElementById('customerDetail');
 
      if (data != "") {
        let customer = JSON.parse(data);

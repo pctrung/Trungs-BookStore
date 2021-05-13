@@ -105,6 +105,17 @@ class OrderModel extends Database
         $isSuccess = $stmt->execute();
 
         if (!$isSuccess) {
+          $result = "";
+          $ngayGH = $data["NgayGH"] == "" ? "" : $data["NgayGH"];
+
+          $deleteStmt = $this->db->prepare("DELETE FROM DATHANG WHERE SoDonDH = ?");
+          $deleteStmt->bind_param("i", $soDonDH);
+
+          $isDeleteSuccess = $deleteStmt->execute();
+
+          if (!$isDeleteSuccess) {
+            return  $deleteStmt->error;
+          }
           return $stmt->error;
         } else if ($stmt->affected_rows <= 0) {
           return "Thêm không thành công";
@@ -121,7 +132,6 @@ class OrderModel extends Database
   }
   function update($data)
   {
-    $error = [];
     $ngayGH = $data["NgayGH"] == "" ? "" : $data["NgayGH"];
 
     $stmt = $this->db->prepare("UPDATE DATHANG SET MSNV = ?, MSKH = ?, NgayDH = ?, NgayGH = ?, TrangThai = ? WHERE SoDonDH = ?");
@@ -131,50 +141,56 @@ class OrderModel extends Database
 
     if (!$isSuccess) {
       return  $stmt->error;
-    } else if ($stmt->affected_rows <= 0) {
-      $error[] = "Không có sự thay đổi";
-    }
-
-    $stmt = $this->db->prepare("SELECT COUNT(*) FROM CHITIETDATHANG WHERE SoDonDH = ?");
-    $stmt->bind_param("i", $data["SoDonDH"]);
-
-    $isSuccess = $stmt->execute();
-    $currentNumOfOrderBook = 0;
-
-    if ($isSuccess) {
-      $currentNumOfOrderBook = $stmt->get_result()->fetch_row()[0];
     }
 
     $soDonDH = $data["SoDonDH"];
+
+    $stmt = $this->db->prepare("DELETE FROM CHITIETDATHANG WHERE SoDonDH = ?");
+    $stmt->bind_param("i", $soDonDH);
+    $isSuccess = $stmt->execute();
+
     for ($i = 0; $i < count($data["MSHH"]); $i++) {
-      $stmt = $this->db->prepare("SELECT * FROM CHITIETDATHANG WHERE SoDonDH = ? AND MSHH = ?");
-      $stmt->bind_param("ii", $soDonDH, $data["MSHH"][$i]);
-      $isSuccess = $stmt->execute();
+      $stmt = $this->db->prepare("INSERT INTO CHITIETDATHANG ( SoDonDH, MSHH, SoLuong, GiaDatHang, GiamGia) VALUES (?, ?, ?, ?, ?)");
 
-      if ($isSuccess && $stmt->get_result()->num_rows > 0) {
-        $stmt = $this->db->prepare("UPDATE CHITIETDATHANG SET SoLuong = ?, GiaDatHang = ?, GiamGia = ? WHERE SoDonDH = ? AND MSHH = ?");
+      if ($stmt) {
+        $stmt->bind_param("iiiii", $soDonDH, $data["MSHH"][$i], $data["SoLuong"][$i], $data["GiaDatHang"][$i], $data["GiamGia"][$i]);
+        $isSuccess = $stmt->execute();
 
-        if ($stmt) {
-          $stmt->bind_param("iiiii", $data["SoLuong"][$i], $data["GiaDatHang"][$i], $data["GiamGia"][$i], $soDonDH, $data["MSHH"][$i]);
-          $isSuccess = $stmt->execute();
-
-          if (!$isSuccess) {
-            return $stmt->error;
-          }
-        }
-      } else {
-        $stmt = $this->db->prepare("INSERT INTO CHITIETDATHANG ( SoDonDH, MSHH, SoLuong, GiaDatHang, GiamGia) VALUES (?, ?, ?, ?, ?)");
-
-        if ($stmt) {
-          $stmt->bind_param("iiiii", $soDonDH, $data["MSHH"][$i], $data["SoLuong"][$i], $data["GiaDatHang"][$i], $data["GiamGia"][$i]);
-          $isSuccess = $stmt->execute();
-
-          if (!$isSuccess) {
-            return $stmt->error;
-          }
+        if (!$isSuccess) {
+          return $stmt->error;
         }
       }
     }
+    // $soDonDH = $data["SoDonDH"];
+    // for ($i = 0; $i < count($data["MSHH"]); $i++) {
+    //   $stmt = $this->db->prepare("SELECT * FROM CHITIETDATHANG WHERE SoDonDH = ? AND MSHH = ?");
+    //   $stmt->bind_param("ii", $soDonDH, $data["MSHH"][$i]);
+    //   $isSuccess = $stmt->execute();
+
+    //   if ($isSuccess && $stmt->get_result()->num_rows > 0) {
+    //     $stmt = $this->db->prepare("UPDATE CHITIETDATHANG SET SoLuong = ?, GiaDatHang = ?, GiamGia = ? WHERE SoDonDH = ? AND MSHH = ?");
+
+    //     if ($stmt) {
+    //       $stmt->bind_param("iiiii", $data["SoLuong"][$i], $data["GiaDatHang"][$i], $data["GiamGia"][$i], $soDonDH, $data["MSHH"][$i]);
+    //       $isSuccess = $stmt->execute();
+
+    //       if (!$isSuccess) {
+    //         return $stmt->error;
+    //       }
+    //     }
+    //   } else {
+    //     $stmt = $this->db->prepare("INSERT INTO CHITIETDATHANG ( SoDonDH, MSHH, SoLuong, GiaDatHang, GiamGia) VALUES (?, ?, ?, ?, ?)");
+
+    //     if ($stmt) {
+    //       $stmt->bind_param("iiiii", $soDonDH, $data["MSHH"][$i], $data["SoLuong"][$i], $data["GiaDatHang"][$i], $data["GiamGia"][$i]);
+    //       $isSuccess = $stmt->execute();
+
+    //       if (!$isSuccess) {
+    //         return $stmt->error;
+    //       }
+    //     }
+    //   }
+    // }
     return true;
   }
 
@@ -200,5 +216,33 @@ class OrderModel extends Database
 
   function updateState($id, $state)
   {
+    $stateValue = "";
+    switch ($state) {
+      case 1:
+        $stateValue = "Chưa xử lý";
+        break;
+      case 2:
+        $stateValue = "Đang chuẩn bị hàng";
+        break;
+      case 3:
+        $stateValue = "Đang giao hàng";
+        break;
+      case 4:
+        $stateValue = "Đã giao hàng";
+        break;
+      default:
+        $stateValue = "Chưa xử lý";
+    }
+    $stmt = $this->db->prepare("UPDATE DATHANG SET TrangThai = ? WHERE SoDonDH = ?");
+    $stmt->bind_param("si", $stateValue, $id);
+
+    $isSuccess = $stmt->execute();
+
+    if (!$isSuccess) {
+      return  $stmt->error;
+    } else if ($stmt->affected_rows <= 0) {
+      return "Không có sự thay đổi";
+    }
+    return true;
   }
 }

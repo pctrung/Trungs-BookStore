@@ -1,5 +1,3 @@
-window.onload = function () {};
-
 function formValidate() {
   var isValid = phoneValidate();
 
@@ -26,12 +24,32 @@ function phoneValidate() {
 }
 
 function orderValidate() {
+  // check date is valid
   if (document.getElementById("NgayDH") && document.getElementById("NgayGH")) {
     let ngayDH = new Date(document.getElementById("NgayDH").value);
     let ngayGH = new Date(document.getElementById("NgayGH").value);
+
     if (ngayGH < ngayDH) {
       document.getElementById("dateMessage").innerText =
         "Ngày giao hàng không được nhỏ hơn ngày đặt hàng!";
+      return false;
+    } else {
+      document.getElementById("dateMessage").innerText = "";
+    }
+  }
+
+  // check customer id and staff id is valid
+  if (
+    document.getElementById("staffDetail") ||
+    document.getElementById("customerDetail")
+  ) {
+    let staffDetail = document.getElementById("staffDetail").innerText;
+    let customerDetail = document.getElementById("customerDetail").innerText;
+
+    if (
+      staffDetail.includes("Không tồn tại") ||
+      customerDetail.includes("Không tồn tại")
+    ) {
       return false;
     }
   }

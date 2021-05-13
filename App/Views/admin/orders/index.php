@@ -52,11 +52,11 @@
                     <td><?= $order['NgayDH'] ?></td>
                     <td><?= ($order['NgayGH'] == "" || $order['NgayGH'] == "00/00/0000") ? "Chưa giao" : $order['NgayGH'] ?></td>
                     <td>
-                      <select class="form-control custom-select" name="TrangThai" id="TrangThai<?= $key ?>" onchange="onChangeStateOrder()">
-                        <option value="Chưa xử lý" <?= $order['TrangThai'] == 'Chưa xử lý' ? 'selected' : '' ?>>Chưa xử lý</option>
-                        <option value="Đang chuẩn bị hàng" <?= $order['TrangThai'] == 'Đang chuẩn bị hàng' ? 'selected' : '' ?>>Đang chuẩn bị hàng</option>
-                        <option value="Đang giao hàng" <?= $order['TrangThai'] == 'Đang giao hàng' ? 'selected' : '' ?>>Đang giao hàng</option>
-                        <option value="Đã giao" <?= $order['TrangThai'] == 'Đã giao' ? 'selected' : '' ?>>Đã giao</option>
+                      <select class="form-control custom-select" name="TrangThai" id="TrangThai<?= $key ?>" onchange="onChangeStateOrder(<?= $order['SoDonDH'] ?>,this)">
+                        <option value="1" <?= $order['TrangThai'] == 'Chưa xử lý' ? 'selected' : '' ?>>Chưa xử lý</option>
+                        <option value="2" <?= $order['TrangThai'] == 'Đang chuẩn bị hàng' ? 'selected' : '' ?>>Đang chuẩn bị hàng</option>
+                        <option value="3" <?= $order['TrangThai'] == 'Đang giao hàng' ? 'selected' : '' ?>>Đang giao hàng</option>
+                        <option value="4" <?= $order['TrangThai'] == 'Đã giao' ? 'selected' : '' ?>>Đã giao</option>
                       </select>
                     </td>
                     <td><?= number_format($order['ThanhTien'], 0, '', ','); ?>đ</td>
@@ -107,3 +107,32 @@
   </div>
   <!-- /.container-fluid -->
 </section>
+
+<script>
+  function onChangeStateOrder(orderID, trangThai) {
+    var state = trangThai.options[trangThai.selectedIndex].value;
+    window.location.replace("<?= DOCUMENT_ROOT . "/admin/order/updateState/" ?>" + orderID + "/" + state);
+
+    // Tính làm ajax nhưng bị lỗi
+
+    // var ajax = new XMLHttpRequest();
+
+    // ajax.onreadystatechange = function() {
+    //   if (this.readyState == 4 && this.status == 200) {
+    //     if (this.responseText == "false") {
+    //       bookNotFound(e.target);
+    //     } else {
+    //       bookFound(e.target, this.responseText);
+    //     }
+    //   }
+    // };
+
+    // ajax.open("post", "<?= DOCUMENT_ROOT . "/admin/order/updateState/" ?>" + orderID + "/" + state, true);
+    // ajax.send();
+  }
+</script>
+
+<!-- <option value="Chưa xử lý" <?= $order['TrangThai'] == 'Chưa xử lý' ? 'selected' : '' ?>><a href="<?= DOCUMENT_ROOT ?>/admin/order/updateState/<?= $order['SoDonDH'] ?>/0">Chưa xử lý</a></option>
+<option value="Đang chuẩn bị hàng" <?= $order['TrangThai'] == 'Đang chuẩn bị hàng' ? 'selected' : '' ?>><a href="<?= DOCUMENT_ROOT ?>/admin/order/updateState/<?= $order['SoDonDH'] ?>/1">Đang chuẩn bị hàng</a></option>
+<option value="Đang giao hàng" <?= $order['TrangThai'] == 'Đang giao hàng' ? 'selected' : '' ?>><a href="<?= DOCUMENT_ROOT ?>/admin/order/updateState/<?= $order['SoDonDH'] ?>/2">Đang giao hàng</a></option>
+<option value="Đã giao" <?= $order['TrangThai'] == 'Đã giao' ? 'selected' : '' ?>><a href="<?= DOCUMENT_ROOT ?>/admin/order/updateState/<?= $order['SoDonDH'] ?>/3">Đang giao hàng</a></option> -->

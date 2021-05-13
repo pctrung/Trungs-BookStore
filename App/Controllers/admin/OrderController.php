@@ -96,5 +96,16 @@ class OrderController extends Controller
 
   function updateState($id, $state)
   {
+    $result = $this->order->updateState($id, $state);
+
+    if ($result === true) {
+      $_SESSION['alert']['success'] = true;
+      $_SESSION['alert']['messages'] = "Cập nhật trạng thái đơn hàng thành công";
+    } else {
+      $_SESSION['alert']['success'] = false;
+      $_SESSION['alert']['messages'] = $result;
+    }
+
+    header("Location:" . DOCUMENT_ROOT . "/admin/order/index");
   }
 }
