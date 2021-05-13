@@ -228,7 +228,7 @@ class OrderModel extends Database
         $stateValue = "Đang giao hàng";
         break;
       case 4:
-        $stateValue = "Đã giao hàng";
+        $stateValue = "Đã giao";
         break;
       default:
         $stateValue = "Chưa xử lý";
