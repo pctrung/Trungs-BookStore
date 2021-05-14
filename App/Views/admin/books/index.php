@@ -53,7 +53,7 @@
                     <td><?= $book['SoLuongHang'] ?></td>
                     <td><?= $book['TenLoaiHang'] ?></td>
                     <td><span class="d-inline-block text-truncate" style="max-width: 150px;"><?= $book['GhiChu'] ?></span></td>
-                    <td><?= $book['Gia'] ?></td>
+                    <td> <?= number_format($book['Gia'], 0, '', ',') ?>đ </td>
                     <td>
                       <?php if ($book['Hinh1'] != "") : ?>
                         <img src="<?= BOOK_IMAGES . '/' . $book['Hinh1'] ?>" class="my-admin-book-thumbnail rounded mx-auto d-block" alt="Ảnh Bìa <?= $book['MSHH'] ?>">

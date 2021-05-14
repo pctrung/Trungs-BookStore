@@ -19,6 +19,12 @@ class App
     if ($url[0] === "admin") {
       // handler when admin side
       unset($url[0]);
+
+      if (!isset($_SESSION['admin']) && \strtolower($url[1]) != "login") {
+        $url[1] = "Login";
+        $url[2] = "index";
+      }
+
       if (file_exists(CONT . DS . "admin" . DS . ucfirst($url[1]) . "Controller.php")) {
         $this->controller = ucfirst($url[1]);
         $GLOBALS['currentRoute'] = $url[1];

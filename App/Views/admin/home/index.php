@@ -3,12 +3,11 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Dashboard</h1>
+        <h1 class="m-0">Trang chủ</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard v1</li>
+          <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -25,14 +24,13 @@
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>150</h3>
-
-            <p>New Orders</p>
+            <h3><?= $data['numOfBook'] ?></h3>
+            <p>Quyển sách</p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="<?= DOCUMENT_ROOT ?>/admin/book" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -40,14 +38,14 @@
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
+            <h3><?= $data['numOfOrder'] ?></h3>
 
-            <p>Bounce Rate</p>
+            <p>Đơn hàng chưa xử lý</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="<?= DOCUMENT_ROOT ?>/admin/order" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -55,14 +53,14 @@
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3>44</h3>
+            <h3><?= $data['numOfStaff'] ?></h3>
 
-            <p>User Registrations</p>
+            <p>Nhân sự</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="<?= DOCUMENT_ROOT ?>/admin/staff" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -70,14 +68,14 @@
         <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3>65</h3>
+            <h3><?= number_format($data['revenue'], 0, '', ',') ?>đ</h3>
 
-            <p>Unique Visitors</p>
+            <p>Doanh thu tháng 6</p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->

@@ -79,4 +79,34 @@ class StaffModel extends Database
 
     return true;
   }
+  function checkUser($id, $password)
+  {
+    $md5Pass = md5($password);
+    $id = intval($id);
+    $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE MSNV = ? AND password = ?");
+    $stmt->bind_param("is", $id, $md5Pass);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function getAllNumber()
+  {
+    $sql = "SELECT COUNT(*) FROM $this->table";
+
+    $result = $this->db->query($sql);
+
+    if ($result->num_rows > 0) {
+      return $result->fetch_row()[0];
+    } else {
+      return false;
+    }
+    return true;
+  }
 }

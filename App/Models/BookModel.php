@@ -79,6 +79,20 @@ class BookModel extends Database
     return true;
   }
 
+  function getAllNumber()
+  {
+    $sql = "SELECT COUNT(*) FROM $this->table";
+
+    $result = $this->db->query($sql);
+
+    if ($result->num_rows > 0) {
+      return $result->fetch_row()[0];
+    } else {
+      return false;
+    }
+    return true;
+  }
+
   // function pagination($currentPage, $limit)
   // {
   //   $startNumber = ($currentPage - 1) * $limit;

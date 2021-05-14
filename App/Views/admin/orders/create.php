@@ -29,7 +29,7 @@
            <div class="card-body">
              <div class="form-group">
                <label for="MSNV">Mã nhân viên</label>
-               <input required oninput="onChangeStaffID()" type="text" id="staffIDInput" name="MSNV" class="form-control"></input>
+               <input required oninput="onChangeStaffID()" type="text" id="staffIDInput" name="MSNV" class="form-control" value="<?= $_SESSION['admin'] ?>"></input>
                <div id="staffDetail"></div>
              </div>
              <div class="form-group">

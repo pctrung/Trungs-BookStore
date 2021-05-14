@@ -24,6 +24,7 @@ class Controller
 
     if (\file_exists(VIEW . DS . $view)) {
       require_once(VIEW . DS . "layout/" . $role . "_" . "layout.php");
+      return;
     } else {
       die("Not found view " . $view);
     }

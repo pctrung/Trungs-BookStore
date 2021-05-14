@@ -26,16 +26,22 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-    <?php require_once(VIEW . DS . "includes/admin/sidebar.php") ?>
 
-    <?php require_once(VIEW . DS . "includes/admin/header.php") ?>
-
-    <div class="content-wrapper">
+    <!-- Nếu là trang login thì không hiện header footer -->
+    <?php if (strpos($view, "login")) : ?>
       <?php require_once(VIEW . DS . $view); ?>
-    </div>
 
+    <?php else : ?>
+      <?php require_once(VIEW . DS . "includes/admin/sidebar.php") ?>
 
-    <?php require_once(VIEW . DS . "includes/admin/footer.php") ?>
+      <?php require_once(VIEW . DS . "includes/admin/header.php") ?>
+
+      <div class="content-wrapper">
+        <?php require_once(VIEW . DS . $view); ?>
+      </div>
+
+      <?php require_once(VIEW . DS . "includes/admin/footer.php") ?>
+    <?php endif; ?>
   </div>
 
   <!-- My script -->

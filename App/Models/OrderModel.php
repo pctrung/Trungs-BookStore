@@ -245,4 +245,32 @@ class OrderModel extends Database
     }
     return true;
   }
+
+  function getAllNumber()
+  {
+    $sql = "SELECT COUNT(*) FROM DATHANG WHERE TrangThai = 'Chưa xử lý'";
+
+    $result = $this->db->query($sql);
+
+    if ($result->num_rows > 0) {
+      return $result->fetch_row()[0];
+    } else {
+      return false;
+    }
+    return true;
+  }
+
+  function getRevenue($month)
+  {
+    $sql = "SELECT fn_DoanhThuThang($month)";
+
+    $result = $this->db->query($sql);
+
+    if ($result->num_rows > 0) {
+      return $result->fetch_row()[0];
+    } else {
+      return false;
+    }
+    return true;
+  }
 }
