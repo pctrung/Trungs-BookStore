@@ -6,6 +6,6 @@ class AboutController extends Controller
 {
   function index()
   {
-    $this->view("client", "/about/index", []);
+    $this->view("admin", "about/index", []);
   }
 }

@@ -35,6 +35,7 @@ class LoginController extends Controller
   function logout()
   {
     unset($_SESSION['admin']);
+    unset($_SESSION['adminName']);
     header("Location:" . DOCUMENT_ROOT . "/admin/login");
   }
 }

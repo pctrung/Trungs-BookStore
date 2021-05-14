@@ -14,7 +14,7 @@
         <img src="<?= DOCUMENT_ROOT ?>/public/admin/img/avatar-user1.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Phạm Chí Trung</a>
+        <a href="<?= DOCUMENT_ROOT ?>/admin/about" class="d-block"><?= isset($_SESSION['adminName']) ? $_SESSION['adminName'] : "Phạm Chí Trung" ?></a>
       </div>
     </div>
 

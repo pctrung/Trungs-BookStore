@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Trung's BookStore</title>
+  <title>Trung's Bookstore</title>
 
   <link rel="icon" href="<?= DOCUMENT_ROOT ?>/public/img/icon.png">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/admin/css/my-style.css">
