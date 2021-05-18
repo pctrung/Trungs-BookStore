@@ -90,28 +90,6 @@ nav {
   display: grid;
   justify-content: center;
 }
-.btn {
-  font-family: var(--font-title);
-  font-weight: bold;
-  font-size: 16px;
-  padding: 8px 30px;
-  outline: none;
-  border-radius: 60px;
-  border: none;
-  color: #fff;
-  transition: all 300ms;
-}
-.btn:hover {
-  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.25);
-  transition: all 300ms;
-}
-.btn:active {
-  background-color: var(--active-color);
-  transition: all 300ms;
-}
-.btn--primary {
-  background-color: var(--primary-color);
-}
 .popular-book__item__info {
   display: flex;
   flex-direction: column;
@@ -185,7 +163,7 @@ nav {
   position: relative;
 }
 .category-book__item:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.151);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
   transition: all 300ms ease-in;
   z-index: 999;
 }
@@ -237,6 +215,15 @@ nav {
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
+}
+.category-book__view-more {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+.category-book__view-more button {
+  padding: 5px 20px;
+  font-size: 14px;
 }
 
 /* responsive  */

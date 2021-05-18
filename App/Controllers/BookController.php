@@ -21,6 +21,10 @@ class BookController extends Controller
     if ($result) {
       $data = $result;
     }
+    foreach ($data as $key => $book) {
+      $data[$key]['Hinh1'] = DOCUMENT_ROOT . "/public/uploads/book-images/" . $book['Hinh1'];
+      $data[$key]['Gia'] = number_format($book['Gia'], 0, '', ',') . "đ";
+    }
     echo ($data === [] ? "Not found any book!" : json_encode($data));
   }
   function getByIDJSON($id = "")
@@ -29,6 +33,8 @@ class BookController extends Controller
     $result = $this->book->getByID($id);
     if ($result) {
       $data = $result;
+      $data['Hinh1'] = DOCUMENT_ROOT . "/public/uploads/book-images/" . $data['Hinh1'];
+      $data['Gia'] = number_format($data['Gia'], 0, '', ',') . "đ";
     }
     echo ($data == [] ? "Not found book id: $id" : json_encode($data));
   }

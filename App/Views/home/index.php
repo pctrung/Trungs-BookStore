@@ -35,7 +35,7 @@
   <ul id="navCategory" class="nav">
     <?php foreach ($data['categories'] as $key => $category) : ?>
       <?php if ($key + 1 <= 13) : ?>
-        <li onclick="addCategory(this)" class="nav__item"><?= $category['TenLoaiHang'] ?></li>
+        <li onclick="addCategory(this)" class="nav__item" value="<?= $category['MaLoaiHang'] ?>"><?= $category['TenLoaiHang'] ?></li>
       <?php endif; ?>
       <?php if ($key + 1 == 14) : ?>
         <li class="nav__item">...</li>
@@ -43,17 +43,8 @@
     <?php endforeach; ?>
 </nav>
 <div class="category-book" id="category-book">
-  <?php foreach ($data['books'] as $key => $popularBook) : ?>
-    <a href="<?= DOCUMENT_ROOT . "/book/" . $popularBook['MSHH'] ?>">
-      <div class="category-book__item">
-        <img class="category-book__item__image" src="<?= DOCUMENT_ROOT . "/public/uploads/book-images/" . $popularBook['Hinh1'] ?>" alt="Ảnh bìa">
-        <div class="category-book__item__title">
-          <?= $popularBook['TenHH'] ?>
-        </div>
-        <div class="category-book__item__price">
-          <?= number_format($popularBook['Gia'], 0, '', ',') ?>đ
-        </div>
-      </div>
-    </a>
-  <?php endforeach; ?>
+
+</div>
+<div id="view-more-button" class="container category-book__view-more">
+  <!-- <button class="btn btn--secondary">Xem thêm</button> -->
 </div>

@@ -20,6 +20,7 @@
 </head>
 
 <body>
+  <p hidden id="DOCUMENT_ROOT"><?= DOCUMENT_ROOT ?></p>
   <?php require_once(VIEW . DS . "includes/client/header.php") ?>
   <div class="wrapper">
     <div class="container">

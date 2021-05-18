@@ -55,3 +55,41 @@ body {
   padding: 0 15px;
   margin: 0 auto;
 }
+
+.btn {
+  font-family: var(--font-title);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 30px;
+  outline: none;
+  border-radius: 60px;
+  border: none;
+  transition: all 300ms;
+}
+.btn:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+.btn--primary:hover {
+  transition: all 300ms;
+}
+.btn--primary:active {
+  background-color: var(--active-color);
+  transition: all 300ms;
+}
+.btn--primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.btn--secondary {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.btn--secondary:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn--secondary:active {
+  background-color: var(--active-color);
+  color: white;
+}

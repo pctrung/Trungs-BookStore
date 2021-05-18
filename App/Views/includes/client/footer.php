@@ -1,4 +1,4 @@
-<footer class="footer container-fluid">
+<footer id="footer" class="footer container-fluid">
   <h5>About me</h5>
   <img class="footer__avatar" src="<?= DOCUMENT_ROOT . "/public/admin/img/trung-avatar.png" ?>">
   <div class="footer__info">

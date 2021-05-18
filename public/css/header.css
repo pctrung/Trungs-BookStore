@@ -109,6 +109,15 @@
 .header__user__username:hover {
   opacity: 0.8;
 }
+.header__login-button {
+  display: flex;
+  align-items: center;
+}
+.header__login-button button {
+  font-size: 14px;
+  padding: 5px 20px;
+  margin-right: 10px;
+}
 .header__menu img {
   width: 18px;
   cursor: pointer;
@@ -146,7 +155,7 @@
   }
   .header__menu--mobile {
     position: absolute;
-    transform: translateX(100%);
+    transform: translateY(-50%);
     margin-top: 20px;
     transition: all 500ms ease-in-out;
     display: flex;
