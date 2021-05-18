@@ -5,24 +5,31 @@ use App\Core\Controller;
 class BookController extends Controller
 {
   private $book;
-  private $limit = 20;
-
   function __construct()
   {
     $this->book = $this->model("BookModel");
   }
   function index()
   {
-    $currentPage = $this->getCurrentPage();
-    $data = $this->product->pagination($currentPage, $this->limit);
+    $data = [];
     $this->view("client", "books/index", $data);
   }
-  function detail($id)
+  function getAllJSON()
   {
-    $product = $this->product->getByID($id);
+    $data = [];
+    $result = $this->book->all();
+    if ($result) {
+      $data = $result;
+    }
+    echo ($data === [] ? "Not found any book!" : json_encode($data));
   }
-  function getCurrentPage()
+  function getByIDJSON($id = "")
   {
-    return isset($_GET['page']) ? $_GET['page'] : 1;
+    $data = [];
+    $result = $this->book->getByID($id);
+    if ($result) {
+      $data = $result;
+    }
+    echo ($data == [] ? "Not found book id: $id" : json_encode($data));
   }
 }

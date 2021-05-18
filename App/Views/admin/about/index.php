@@ -39,10 +39,10 @@
             <a href="https://www.facebook.com/trungxi.it" target="_blank" class="fab fa-facebook fa-2x"></a>
           </div>
           <div class="col text-center">
-            <a href="https://www.facebook.com/trungxi.it" target="_blank" class="fab fa-linkedin fa-2x"></a>
+            <a href="https://www.linkedin.com/in/trung-ph%E1%BA%A1m-101b871a2/" target="_blank" class="fab fa-linkedin fa-2x"></a>
           </div>
           <div class="col text-center">
-            <a href="https://www.facebook.com/trungxi.it" target="_blank" class="fab fa-github fa-2x"></a>
+            <a href="https://www.github.com/trungxiit" target="_blank" class="fab fa-github fa-2x"></a>
           </div>
         </div>
       </div>
