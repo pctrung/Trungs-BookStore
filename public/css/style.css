@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #ec455a;
+  --secondary-color: #f7566b;
+  --third-color: #ff7183;
+  --active-color: #c83245;
+  --hover-color: #df4155;
+  --content-color: #4b4b4b;
+  --font-title: "Nunito", sans-serif;
+  --font-content: "Roboto", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--content-color);
+} /* Unvisited link  */
+a:visited {
+  color: #000;
+} /* Visited link    */
+a:hover {
+  color: var(--content-color);
+} /* Mouse over link */
+a:active {
+  color: #000;
+} /* Selected link   */
+
+body {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.container-fluid {
+  max-width: 100vw;
+  padding: 0 15px;
+  margin: 0 auto;
+}
