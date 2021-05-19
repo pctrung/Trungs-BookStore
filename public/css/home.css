@@ -158,7 +158,7 @@ nav {
 
   border-radius: 25px;
   transition: all 300ms ease-out;
-  padding: 10px 20px;
+  padding: 15px;
 
   position: relative;
 }
@@ -265,11 +265,22 @@ nav {
     width: 100%;
     margin-right: 20px;
   }
+  .popular-book__item__info__title {
+    font-size: 16px;
+  }
+  .popular-book__item__info__title {
+    font-size: 15px;
+  }
   .popular-book__item__image {
-    height: 320px;
+    width: 150px;
+    height: 250px;
+  }
+  .popular-book__item__button .btn {
+    font-size: 14px;
   }
   .popular-book__item__info__content {
     -webkit-line-clamp: 6; /* number of lines to show */
+    font-size: 14px;
   }
   .category-book {
     grid-template-columns: 1fr 1fr;
