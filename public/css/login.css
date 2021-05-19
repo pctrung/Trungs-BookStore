@@ -1,0 +1,61 @@
+.login__form__title {
+  font-size: 25px;
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 30px;
+}
+.login__form__message {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.login__background {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #ffcda5, #c75764);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login__form {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.205);
+
+  width: 500px;
+  padding: 50px 40px 40px 40px;
+  border-radius: 30px;
+
+  display: grid;
+  grid-gap: 10px;
+}
+.login__form__input {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: grid;
+  grid-gap: 10px;
+}
+.login__form__input input {
+  font-family: var(--font-title);
+  border-radius: 30px;
+  border: 2px solid rgba(192, 192, 192, 0);
+  outline: none;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: rgb(228, 228, 228);
+  transition: all 200ms ease-out;
+}
+.login__form input:focus {
+  border: 2px solid #ec455b8c;
+  transition: all 200ms ease-in;
+}
+.signupCheckMessage {
+  font-family: var(--font-content);
+  font-weight: normal;
+  font-size: 14px;
+  color: red;
+}
+@media (max-width: 768px) {
+  .login__form {
+    width: 95%;
+  }
+}

@@ -8,8 +8,10 @@
       <div class="card-body">
         <p class="login-box-msg">Đăng nhập bằng tài khoản admin để vào trang quản lý</p>
 
-        <p class="login-box-msg text-red"><?php echo isset($_SESSION['errorMessage']) ? $_SESSION['errorMessage'] : "";
-                                          unset($_SESSION['errorMessage']); ?></p>
+        <p class="login-box-msg text-red">
+          <?php echo isset($_SESSION['errorMessage']) ? $_SESSION['errorMessage'] : "";
+          unset($_SESSION['errorMessage']); ?>
+        </p>
 
         <form action="<?= DOCUMENT_ROOT ?>/admin/login/checkUser" method="post">
           <div class="form-group mb-3">

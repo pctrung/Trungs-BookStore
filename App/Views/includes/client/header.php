@@ -12,9 +12,11 @@
           <img src="<?= DOCUMENT_ROOT ?>/public/img/bag.svg" alt="Shopping Cart Icon">
           <span class='header__user__cart__badge' id='headerCartCount'>0</span>
         </div>
-        <span class="header__user__username"><?= isset($_SESSION['username']) ? $_SESSION['username'] : "Phạm Chí Trung" ?></span>
+        <span class="header__user__username"><?= isset($_SESSION['username']) ? $_SESSION['username'] : "Phạm Chí Trung" ?>
+        </span>
         <div class="header__user__avatar">
           <img src="<?= DOCUMENT_ROOT ?>/public/admin/img/trung-avatar.png" alt="User Avatar">
+          <div class="header__user__logout"><a href="<?= DOCUMENT_ROOT ?>/login/logout">Đăng xuất</a></div>
         </div>
         <div onClick="openMenu();" class="header__menu"> <img src="<?= DOCUMENT_ROOT ?>/public/img/menu.svg" alt="Menu icon"></div>
       </div>

@@ -17,20 +17,31 @@
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/header.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/home.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/footer.css">
+  <?php if (strpos($view, "login") !== false) : ?>
+    <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/login.css">
+  <?php endif; ?>
 </head>
 
 <body>
   <p hidden id="DOCUMENT_ROOT"><?= DOCUMENT_ROOT ?></p>
-  <?php require_once(VIEW . DS . "includes/client/header.php") ?>
-  <div class="wrapper">
-    <div class="container">
-      <?php require_once(VIEW . DS . $view) ?>
+
+  <?php if (strpos($view, "login") !== false) : ?>
+    <?php require_once(VIEW . DS . $view); ?>
+  <?php else : ?>
+    <?php require_once(VIEW . DS . "includes/client/header.php") ?>
+    <div class="wrapper">
+      <div class="container">
+        <?php require_once(VIEW . DS . $view) ?>
+      </div>
     </div>
-  </div>
-  <?php require_once(VIEW . DS . "includes/client/footer.php") ?>
+    <?php require_once(VIEW . DS . "includes/client/footer.php") ?>
+  <?php endif; ?>
+
 </body>
 
 <!-- Add javascript -->
-<script src="<?= DOCUMENT_ROOT ?>/public/js/app.js"></script>
+<?php if (strpos($view, "login") === false) : ?>
+  <script src="<?= DOCUMENT_ROOT ?>/public/js/app.js"></script>
+<?php endif; ?>
 
 </html>

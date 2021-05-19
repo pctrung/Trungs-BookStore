@@ -37,11 +37,13 @@ class CustomerModel extends Database
 
   function store($data)
   {
-    $stmt = $this->db->prepare("INSERT INTO $this->table (HoTenKH, TenCongTy, DiaChi, SoDienThoai, Email) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $this->db->prepare("INSERT INTO $this->table (HoTenKH, TenCongTy, DiaChi, SoDienThoai, Email, password) VALUES (?, ?, ?, ?, ?, ?)");
 
-    $stmt->bind_param("sssss", $data['HoTenKH'], $data['TenCongTy'], $data['DiaChi'], $data['SoDienThoai'], $data['Email']);
+    $stmt->bind_param("ssssss", $data['HoTenKH'], $data['TenCongTy'], $data['DiaChi'], $data['SoDienThoai'], $data['Email'], $data['password']);
 
     $isSuccess = $stmt->execute();
+
+    // die(var_dump($isSuccess));
 
     if (!$isSuccess) {
       return $stmt->error;
@@ -81,5 +83,37 @@ class CustomerModel extends Database
     }
 
     return true;
+  }
+
+  function checkUser($email, $password)
+  {
+    $md5Pass = md5($password);
+    $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE Email = ? AND password = ?");
+    $stmt->bind_param("ss", $email, $md5Pass);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+      $username = $result->fetch_assoc();
+      $_SESSION['username'] = $username['HoTenKH'];
+      return true;
+    } else {
+      return false;
+    }
+  }
+  function checkEmail($email)
+  {
+    $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE Email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

@@ -126,6 +126,15 @@
 .header__menu--mobile {
   display: none;
 }
+.header__user__avatar:hover .header__user__logout {
+  display: block;
+}
+.header__user__logout {
+  padding: 10px 0;
+  transform: translateX(-10%);
+  width: 100px;
+  display: none;
+}
 @media (max-width: 768px) {
   .header {
     padding: 0 10px;

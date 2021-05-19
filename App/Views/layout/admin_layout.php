@@ -28,7 +28,7 @@
   <div class="wrapper">
 
     <!-- Nếu là trang login thì không hiện header footer -->
-    <?php if (strpos($view, "login")) : ?>
+    <?php if (strpos($view, "login") !== false) : ?>
       <?php require_once(VIEW . DS . $view); ?>
 
     <?php else : ?>
