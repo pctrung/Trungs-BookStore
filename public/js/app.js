@@ -1,4 +1,7 @@
 var allBook;
+var DOCUMENT_ROOT;
+
+window.onload = getDataAllBook();
 
 function addCategory(category) {
   category.classList.toggle("nav__item--active");
@@ -8,12 +11,10 @@ function openMenu() {
   var menuMobile = document.getElementById("headerMenuMobile");
   menuMobile.classList.toggle("header__menu--mobile--active");
 }
-window.onload = getDataAllBook();
 
 function getDataAllBook() {
-  var DOCUMENT_ROOT = document.getElementById("DOCUMENT_ROOT").innerText;
+  DOCUMENT_ROOT = document.getElementById("DOCUMENT_ROOT").innerText;
   DOCUMENT_ROOT = DOCUMENT_ROOT == undefined ? "" : DOCUMENT_ROOT;
-
   var ajax = new XMLHttpRequest();
   ajax.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -41,8 +42,6 @@ function showBookByCategory(categories) {
 }
 function showBook(books) {
   var result;
-  var DOCUMENT_ROOT = document.getElementById("DOCUMENT_ROOT").innerText;
-  DOCUMENT_ROOT = DOCUMENT_ROOT == undefined ? "" : DOCUMENT_ROOT;
 
   var categoryBook = document.getElementById("category-book");
   if (!categoryBook) {
@@ -75,7 +74,7 @@ function objectToHTML(books) {
       .map(
         (book) =>
           `
-      <a href="${DOCUMENT_ROOT}"/book/"${book.MSHH}">
+      <a href="${DOCUMENT_ROOT}/book/detail/${book.MSHH}">
         <div class="category-book__item">
           <img class="category-book__item__image" src="${book.Hinh1}" alt="Ảnh bìa sách ${book.TenHH}">
           <div class="category-book__item__title">

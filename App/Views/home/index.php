@@ -12,7 +12,7 @@
         <div class="popular-book__item">
           <img class="popular-book__item__image" src="<?= DOCUMENT_ROOT . "/public/uploads/book-images/" . $popularBook['Hinh1'] ?>" alt="Best Seller Book">
           <div class="popular-book__item__info">
-            <div class="popular-book__item__info__title"><a href="<?= DOCUMENT_ROOT . "/book/" . $popularBook['MSHH'] ?>"><?= $popularBook['TenHH'] ?></a></div>
+            <div class="popular-book__item__info__title"><a href="<?= DOCUMENT_ROOT . "/book/detail/" . $popularBook['MSHH'] ?>"><?= $popularBook['TenHH'] ?></a></div>
             <div class="popular-book__item__info__price"><?= number_format($popularBook['Gia'], 0, '', ',') ?>đ </div>
             <div class="popular-book__item__info__content"><?= $popularBook['GhiChu'] ?></div>
             <div class="popular-book__item__button">

@@ -40,7 +40,7 @@
 </body>
 
 <!-- Add javascript -->
-<?php if (strpos($view, "login") === false) : ?>
+<?php if (strpos($view, "home") !== false) : ?>
   <script src="<?= DOCUMENT_ROOT ?>/public/js/app.js"></script>
 <?php endif; ?>
 

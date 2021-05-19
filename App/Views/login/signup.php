@@ -1,4 +1,4 @@
-<div class="login__background">
+<div class="login__background" style="height:100%">
   <form onsubmit="return onSubmit();" class="login__form" action="<?= DOCUMENT_ROOT . "/login/register" ?>" method="post">
     <h1 class="login__form__title">Đăng ký tài khoản <br> Trung's Bookstore</h1>
     <p class="login__form__message">
@@ -37,7 +37,6 @@
 </div>
 </form>
 </div>
-
 <script>
   // dùng ajax kiểm tra email trùng
   function onEmailChange(email) {

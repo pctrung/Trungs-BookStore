@@ -12,6 +12,14 @@ class BookController extends Controller
   function index()
   {
     $data = [];
+    $this->view("client", "home/index", $data);
+  }
+  function detail($id)
+  {
+    $data = $this->book->getByID($id);
+    if ($data == false) {
+      header("Location: " . DOCUMENT_ROOT . "/home");
+    }
     $this->view("client", "books/index", $data);
   }
   function getAllJSON()
