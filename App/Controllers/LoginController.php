@@ -35,6 +35,7 @@ class LoginController extends Controller
   {
     unset($_SESSION['user']);
     unset($_SESSION['username']);
+    unset($_SESSION['bookInCart']);
     header("Location:" . DOCUMENT_ROOT . "/");
   }
   function signup()

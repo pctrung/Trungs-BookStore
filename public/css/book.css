@@ -1,0 +1,119 @@
+.seperate {
+  margin: auto;
+  width: 80%;
+  height: 1px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background-color: rgba(211, 211, 211, 0.336);
+}
+.book-detail {
+  margin: 20px 0;
+  padding: 40px 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.171);
+  border-radius: 30px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+.book-detail__image {
+  width: 280px;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.144);
+}
+.book-detail__info {
+  justify-self: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.book-detail__info__title {
+  font-size: 23px;
+  font-weight: bold;
+  color: rgb(39, 39, 39);
+
+  margin: 10px 0;
+}
+.book-detail__info__price {
+  font-size: 23px;
+  font-weight: bold;
+  color: var(--primary-color);
+
+  margin: 10px 0;
+}
+.book-detail__info__detail {
+  margin: 20px 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  color: var(--font-content);
+}
+.book-detail__info__detail__title {
+  font-weight: bold;
+  font-size: 18px;
+}
+.book-detail__button {
+  width: fit-content;
+  margin-top: 20px;
+}
+.book-detail__content {
+  padding: 20px;
+}
+.book-detail__content__title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+
+  margin: 0 0 15px 0;
+}
+.book-detail__content__content {
+  line-height: 25px;
+  font-size: 18px;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .book-detail {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .book-detail__image {
+    height: 300px;
+    width: 200px;
+  }
+  .book-detail__info__title {
+    margin-top: 25px;
+    font-size: 20px;
+  }
+  .book-detail__info__price {
+    font-size: 20px;
+  }
+  .book-detail__info {
+    align-items: center;
+  }
+  .book-detail__info__detail * {
+    font-size: 16px;
+  }
+  .book-detail__button {
+    margin-top: 0;
+  }
+  .book-detail__content {
+    padding: 0;
+  }
+  .book-detail__content__content {
+    font-size: 16px;
+  }
+  .book-detail__content__title {
+    margin: 10px 0;
+  }
+  .book-detail__button {
+    width: 100%;
+  }
+}

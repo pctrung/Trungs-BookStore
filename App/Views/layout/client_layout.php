@@ -15,17 +15,15 @@
   <!-- my css -->
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/style.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/header.css">
-  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/home.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/footer.css">
-  <?php if (strpos($view, "login") !== false) : ?>
-    <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/login.css">
-  <?php endif; ?>
+
+  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/<?= $GLOBALS['currentRoute'] ?>.css">
 </head>
 
 <body>
   <p hidden id="DOCUMENT_ROOT"><?= DOCUMENT_ROOT ?></p>
 
-  <?php if (strpos($view, "login") !== false) : ?>
+  <?php if (strpos($GLOBALS['currentRoute'], "login") !== false) : ?>
     <?php require_once(VIEW . DS . $view); ?>
   <?php else : ?>
     <?php require_once(VIEW . DS . "includes/client/header.php") ?>

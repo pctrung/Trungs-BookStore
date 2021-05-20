@@ -12,7 +12,7 @@ class BookController extends Controller
   function index()
   {
     $data = [];
-    $this->view("client", "home/index", $data);
+    header("Location: " . DOCUMENT_ROOT . "/home");
   }
   function detail($id)
   {
@@ -21,6 +21,41 @@ class BookController extends Controller
       header("Location: " . DOCUMENT_ROOT . "/home");
     }
     $this->view("client", "books/index", $data);
+  }
+
+  function removeInCart($id)
+  {
+    if (isset($_SESSION['bookInCart'])) {
+      foreach ($_SESSION['bookInCart'] as $key => $value) {
+        if ($value['MSHH'] == $id) {
+          unset($_SESSION['bookInCart'][$key]);
+          echo count($_SESSION['bookInCart']);
+          return;
+        }
+      }
+    }
+    echo count($_SESSION['bookInCart']);
+  }
+  function addToCart($id)
+  {
+    if (isset($_SESSION['bookInCart'])) {
+      foreach ($_SESSION['bookInCart'] as $key => $value) {
+        if ($value['MSHH'] == $id) {
+          echo count($_SESSION['bookInCart']);
+          return;
+        }
+      }
+    }
+
+    $result = $this->book->getByID($id);
+
+    if ($result != false) {
+      $_SESSION['bookInCart'][] = $result;
+      echo count($_SESSION['bookInCart']);
+      return;
+    }
+    echo false;
+    return;
   }
   function getAllJSON()
   {
