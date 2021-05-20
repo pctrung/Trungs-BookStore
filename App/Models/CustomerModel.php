@@ -95,8 +95,8 @@ class CustomerModel extends Database
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-      $username = $result->fetch_assoc();
-      $_SESSION['username'] = $username['HoTenKH'];
+      $user = $result->fetch_assoc();
+      $_SESSION['userDetail'] = $user;
       return true;
     } else {
       return false;

@@ -42,4 +42,12 @@
   <script src="<?= DOCUMENT_ROOT ?>/public/js/app.js"></script>
 <?php endif; ?>
 
+<?php if (isset($_SESSION['userAlert'])) : ?>
+  <script>
+    alert("<?= $_SESSION['userAlert']['message'] ?>")
+  </script>
+<?php
+  unset($_SESSION['userAlert']);
+endif; ?>
+
 </html>

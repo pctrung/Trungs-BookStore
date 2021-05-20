@@ -29,6 +29,10 @@
       <div id="phoneCheckMessage" class="signupCheckMessage"></div>
     </div>
     <div class="login__form__input">
+      <label for="DiaChi">Địa chỉ <span style="color:red; font-weight: normal;">(*)</span></label>
+      <input required id="DiaChi" type="text" name="DiaChi" placeholder="Nhập địa chỉ giao hàng của bạn...">
+    </div>
+    <div class="login__form__input">
       <label for="TenCongTy">Tên công ty</label>
       <input id="TenCongTy" type="text" name="TenCongTy" placeholder="Nhập tên công ty của bạn...">
     </div>

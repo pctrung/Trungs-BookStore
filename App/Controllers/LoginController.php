@@ -34,8 +34,8 @@ class LoginController extends Controller
   function logout()
   {
     unset($_SESSION['user']);
-    unset($_SESSION['username']);
-    unset($_SESSION['bookInCart']);
+    unset($_SESSION['userDetail']);
+    unset($_SESSION['booksInCart']);
     header("Location:" . DOCUMENT_ROOT . "/");
   }
   function signup()

@@ -91,7 +91,7 @@ class StaffModel extends Database
 
     if ($result->num_rows > 0) {
       $username = $result->fetch_assoc();
-      // $_SESSION['adminName'] = $username['HoTenNV'];
+      $_SESSION['adminName'] = $username['HoTenNV'];
       return true;
     } else {
       return false;

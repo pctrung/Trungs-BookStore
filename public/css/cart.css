@@ -1,0 +1,110 @@
+.cart-detail {
+  margin: 20px 0;
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.171);
+  border-radius: 30px; */
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-items: center;
+  gap: 20px;
+}
+.cart-detail__book {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.171);
+  border-radius: 30px;
+  padding: 40px 20px;
+  width: 100%;
+}
+.cart-detail__book__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  padding: 15px;
+}
+.cart-detail__book__item:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.171);
+  border-radius: 15px;
+}
+.cart-detail__book__item img {
+  width: 80px;
+  height: 120px;
+
+  margin-right: 10px;
+
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.158);
+  object-fit: cover;
+}
+.cart-detail__book__item__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cart-detail__book__item__info > * {
+  margin-top: 10px;
+}
+.cart-detail__book__item__info__title {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.cart-detail__book__item__info__price {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+.cart-detail__book__item__info__number input {
+  width: 80px;
+  padding: 5px 10px;
+  outline: none;
+
+  border-radius: 8px;
+  border: 2px solid rgb(228, 228, 228);
+  transition: all 200ms ease-out;
+}
+.cart-detail__book__item__info__number input:focus {
+  border: 2px solid #ec455b8c;
+  transition: all 200ms ease-in;
+}
+
+.cart-detail__user-info {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.171);
+  border-radius: 30px;
+  width: 100%;
+  height: fit-content;
+
+  justify-self: start;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 40px 30px;
+}
+
+.cart-detail__user-info__title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cart-detail__user-info__detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  color: rgb(0, 0, 0);
+}
+.cart-detail__user-info__detail__address {
+  grid-column: 1 / span 2;
+  line-height: 25px;
+}
+.cart-detail__user-info__detail__total {
+  grid-column: 1 / span 2;
+}
+input {
+  margin: 0 5px;
+}
+.cart-detail__user-info__detail__total button {
+  width: 100%;
+  margin-top: 10px;
+}

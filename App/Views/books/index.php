@@ -17,7 +17,7 @@
       <div id="cartButton">
         <?php
         $flag = 0;
-        foreach ($_SESSION['bookInCart'] as $key => $value) {
+        foreach ($_SESSION['booksInCart'] as $key => $value) {
           if ($value['MSHH'] == $data['MSHH']) {
         ?>
             <button onClick="removeInCart(<?= $data['MSHH'] ?>)" class="btn btn--secondary book-detail__button">Đã thêm vào giỏ</button>

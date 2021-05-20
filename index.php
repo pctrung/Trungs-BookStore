@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['bookInCart'])) {
-  $_SESSION['bookInCart'] = [];
+if (!isset($_SESSION['booksInCart'])) {
+  $_SESSION['booksInCart'] = [];
 }
 
 require_once('.\App\Core\initializing.php');

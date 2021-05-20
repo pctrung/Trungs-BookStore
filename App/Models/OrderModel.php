@@ -76,8 +76,11 @@ class OrderModel extends Database
 
   function store($data)
   {
+    $managerStaff = $this->db->query("SELECT * FROM NHANVIEN WHERE CHUCVU = 'Quản lý'")->fetch_assoc();
+    // die(var_dump($managerStaff));
     $result = "";
     $ngayGH = $data["NgayGH"] == "" ? "" : $data["NgayGH"];
+    $data['MSNV'] = $data["MSNV"] == "" ? $managerStaff['MSNV'] : $data["MSNV"];
 
     $stmt = $this->db->prepare("INSERT INTO DATHANG ( MSNV, MSKH, NgayDH, NgayGH, TrangThai) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("iisss", $data["MSNV"], $data["MSKH"], $data["NgayDH"], $ngayGH, $data["TrangThai"]);
@@ -233,8 +236,14 @@ class OrderModel extends Database
       default:
         $stateValue = "Chưa xử lý";
     }
-    $stmt = $this->db->prepare("UPDATE DATHANG SET TrangThai = ? WHERE SoDonDH = ?");
-    $stmt->bind_param("si", $stateValue, $id);
+    if (isset($_SESSION['admin'])) {
+      $staffID = intval($_SESSION['admin']);
+      $stmt = $this->db->prepare("UPDATE DATHANG SET TrangThai = ?, MSNV = ? WHERE SoDonDH = ?");
+      $stmt->bind_param("sii", $stateValue, $staffID, $id);
+    } else {
+      $stmt = $this->db->prepare("UPDATE DATHANG SET TrangThai = ? WHERE SoDonDH = ?");
+      $stmt->bind_param("si", $stateValue, $id);
+    }
 
     $isSuccess = $stmt->execute();
 

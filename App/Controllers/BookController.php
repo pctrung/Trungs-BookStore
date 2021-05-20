@@ -25,23 +25,23 @@ class BookController extends Controller
 
   function removeInCart($id)
   {
-    if (isset($_SESSION['bookInCart'])) {
-      foreach ($_SESSION['bookInCart'] as $key => $value) {
+    if (isset($_SESSION['booksInCart'])) {
+      foreach ($_SESSION['booksInCart'] as $key => $value) {
         if ($value['MSHH'] == $id) {
-          unset($_SESSION['bookInCart'][$key]);
-          echo count($_SESSION['bookInCart']);
+          unset($_SESSION['booksInCart'][$key]);
+          echo count($_SESSION['booksInCart']);
           return;
         }
       }
     }
-    echo count($_SESSION['bookInCart']);
+    echo count($_SESSION['booksInCart']);
   }
   function addToCart($id)
   {
-    if (isset($_SESSION['bookInCart'])) {
-      foreach ($_SESSION['bookInCart'] as $key => $value) {
+    if (isset($_SESSION['booksInCart'])) {
+      foreach ($_SESSION['booksInCart'] as $key => $value) {
         if ($value['MSHH'] == $id) {
-          echo count($_SESSION['bookInCart']);
+          echo count($_SESSION['booksInCart']);
           return;
         }
       }
@@ -50,8 +50,8 @@ class BookController extends Controller
     $result = $this->book->getByID($id);
 
     if ($result != false) {
-      $_SESSION['bookInCart'][] = $result;
-      echo count($_SESSION['bookInCart']);
+      $_SESSION['booksInCart'][] = $result;
+      echo count($_SESSION['booksInCart']);
       return;
     }
     echo false;

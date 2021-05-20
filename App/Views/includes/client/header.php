@@ -9,12 +9,12 @@
     <div class="header__user">
       <div class="header__user__cart">
         <a href="<?= DOCUMENT_ROOT ?>/cart"> <img src="<?= DOCUMENT_ROOT ?>/public/img/bag.svg" alt="Shopping Cart Icon"></a>
-        <span class='header__user__cart__badge' id='headerCartCount'><?= isset($_SESSION['bookInCart']) ? count($_SESSION['bookInCart']) : "0" ?></span>
+        <span class='header__user__cart__badge' id='headerCartCount'><?= isset($_SESSION['booksInCart']) ? count($_SESSION['booksInCart']) : "0" ?></span>
       </div>
 
-      <?php if (isset($_SESSION['user'])) : ?>
+      <?php if (isset($_SESSION['userDetail'])) : ?>
         <a href="#footer">
-          <span class="header__user__username"><?= isset($_SESSION['username']) ? $_SESSION['username'] : "Phạm Chí Trung" ?>
+          <span class="header__user__username"><?= isset($_SESSION['userDetail']) ? $_SESSION['userDetail']['HoTenKH'] : "Phạm Chí Trung" ?>
           </span>
           <div class="header__user__avatar">
             <img src="<?= DOCUMENT_ROOT ?>/public/admin/img/trung-avatar.png" alt="User Avatar">

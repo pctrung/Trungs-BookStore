@@ -18,7 +18,7 @@
             <div class="popular-book__item__button" id="cartButton<?= $key  ?>">
               <?php
               $flag = 0;
-              foreach ($_SESSION['bookInCart'] as $key2 => $value) {
+              foreach ($_SESSION['booksInCart'] as $key2 => $value) {
                 if ($value['MSHH'] == $popularBook['MSHH']) {
               ?>
                   <button onClick="removeInCart(<?= $popularBook['MSHH'] ?>, <?= $key ?>)" class="btn btn--secondary">Đã thêm vào giỏ</button>
