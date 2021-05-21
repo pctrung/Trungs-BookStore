@@ -1,7 +1,9 @@
 <?php
+// Dạ thầy đổi cổng ở đây ạ.
+$defaultPort = "8080";
 
 // config sidebar navigation option
-$documentRoot =  "http://" . $_SERVER['SERVER_NAME'] . ':8080/B1809424-Trung-BookStore';
+$documentRoot =  "http://" . $_SERVER['SERVER_NAME'] . ":$defaultPort/B1809424-Trung-BookStore";
 
 return [
   'document root' => $documentRoot,
