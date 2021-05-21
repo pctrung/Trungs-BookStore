@@ -50,4 +50,11 @@
   unset($_SESSION['userAlert']);
 endif; ?>
 
+<script>
+  function openMenu() {
+    var menuMobile = document.getElementById("headerMenuMobile");
+    menuMobile.classList.toggle("header__menu--mobile--active");
+  }
+</script>
+
 </html>

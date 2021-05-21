@@ -7,10 +7,6 @@ function addCategory(category) {
   category.classList.toggle("nav__item--active");
   onChangeCategory();
 }
-function openMenu() {
-  var menuMobile = document.getElementById("headerMenuMobile");
-  menuMobile.classList.toggle("header__menu--mobile--active");
-}
 
 function getDataAllBook() {
   DOCUMENT_ROOT = document.getElementById("DOCUMENT_ROOT").innerText;
