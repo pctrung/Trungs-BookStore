@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/header.css">
   <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/footer.css">
 
-  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/<?= $GLOBALS['currentRoute'] ?>.css">
+  <link rel="stylesheet" href="<?= DOCUMENT_ROOT ?>/public/css/<?= strtolower($GLOBALS['currentRoute']) ?>.css">
 </head>
 
 <body>

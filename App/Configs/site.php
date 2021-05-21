@@ -3,7 +3,7 @@
 $defaultPort = "8080";
 
 // config sidebar navigation option
-$documentRoot =  "http://" . $_SERVER['SERVER_NAME'] . ":$defaultPort/B1809424-Trung-BookStore";
+$documentRoot =  "http://" . $_SERVER['SERVER_NAME'] . ":$defaultPort/Trung-BookStore";
 
 return [
   'document root' => $documentRoot,
