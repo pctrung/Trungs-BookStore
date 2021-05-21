@@ -1,7 +1,7 @@
 <?php
 
 // config sidebar navigation option
-$documentRoot =  "http://" . $_SERVER['SERVER_NAME'] . ':8080/BookStore-Website';
+$documentRoot =  "http://" . $_SERVER['SERVER_NAME'] . ':8080/B1809424-Trung-BookStore';
 
 return [
   'document root' => $documentRoot,

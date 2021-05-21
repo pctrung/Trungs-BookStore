@@ -164,36 +164,7 @@ class OrderModel extends Database
         }
       }
     }
-    // $soDonDH = $data["SoDonDH"];
-    // for ($i = 0; $i < count($data["MSHH"]); $i++) {
-    //   $stmt = $this->db->prepare("SELECT * FROM CHITIETDATHANG WHERE SoDonDH = ? AND MSHH = ?");
-    //   $stmt->bind_param("ii", $soDonDH, $data["MSHH"][$i]);
-    //   $isSuccess = $stmt->execute();
 
-    //   if ($isSuccess && $stmt->get_result()->num_rows > 0) {
-    //     $stmt = $this->db->prepare("UPDATE CHITIETDATHANG SET SoLuong = ?, GiaDatHang = ?, GiamGia = ? WHERE SoDonDH = ? AND MSHH = ?");
-
-    //     if ($stmt) {
-    //       $stmt->bind_param("iiiii", $data["SoLuong"][$i], $data["GiaDatHang"][$i], $data["GiamGia"][$i], $soDonDH, $data["MSHH"][$i]);
-    //       $isSuccess = $stmt->execute();
-
-    //       if (!$isSuccess) {
-    //         return $stmt->error;
-    //       }
-    //     }
-    //   } else {
-    //     $stmt = $this->db->prepare("INSERT INTO CHITIETDATHANG ( SoDonDH, MSHH, SoLuong, GiaDatHang, GiamGia) VALUES (?, ?, ?, ?, ?)");
-
-    //     if ($stmt) {
-    //       $stmt->bind_param("iiiii", $soDonDH, $data["MSHH"][$i], $data["SoLuong"][$i], $data["GiaDatHang"][$i], $data["GiamGia"][$i]);
-    //       $isSuccess = $stmt->execute();
-
-    //       if (!$isSuccess) {
-    //         return $stmt->error;
-    //       }
-    //     }
-    //   }
-    // }
     return true;
   }
 
@@ -281,5 +252,22 @@ class OrderModel extends Database
       return false;
     }
     return true;
+  }
+  function getByUserID($id)
+  {
+    $result = [];
+    foreach ($this->allData as $key => $order) {
+      if ($order['MSKH'] == $id) {
+        $result[] = $order;
+      }
+    }
+    if ($result != []) {
+      return $result;
+    } else {
+      return false;
+    }
+    // echo '<pre>';
+    // print_r($result);
+    // echo '</pre>';
   }
 }

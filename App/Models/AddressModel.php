@@ -35,55 +35,27 @@ class AddressModel extends Database
       return false;
     }
   }
+  function updateByUserID($data)
+  {
+    $stmt = $this->db->prepare("DELETE FROM $this->table WHERE MSKH = ?");
 
-  // function store($data)
-  // {
-  //   $stmt = $this->db->prepare("INSERT INTO $this->table (HoTenKH, TenCongTy, DiaChi, SoDienThoai, Email, password) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("i", $data['MSKH']);
 
-  //   $stmt->bind_param("ssssss", $data['HoTenKH'], $data['TenCongTy'], $data['DiaChi'], $data['SoDienThoai'], $data['Email'], $data['password']);
+    $isSuccess = $stmt->execute();
 
-  //   $isSuccess = $stmt->execute();
+    foreach ($data['DiaChi'] as $key => $address) {
+      $stmt = $this->db->prepare("INSERT INTO $this->table(MSKH, DIACHI) VALUE (?, ?)");
 
-  //   // die(var_dump($isSuccess));
+      $stmt->bind_param("is", $data['MSKH'], $address);
 
-  //   if (!$isSuccess) {
-  //     return $stmt->error;
-  //   } else if ($stmt->affected_rows <= 0) {
-  //     return "Thêm khách hàng không thành công";
-  //   }
-  //   return true;
-  // }
-  // function update($data)
-  // {
-  //   $stmt = $this->db->prepare("UPDATE $this->table SET HoTenKH = ?, TenCongTy = ?, DiaChi = ?, SoDienThoai = ?, Email = ? WHERE MSKH = ?");
+      $isSuccess = $stmt->execute();
+    }
 
-  //   $stmt->bind_param("sssssi", $data['HoTenKH'], $data['TenCongTy'], $data['DiaChi'], $data['SoDienThoai'], $data['Email'], $data['MSKH']);
-
-  //   $isSuccess = $stmt->execute();
-
-  //   if (!$isSuccess) {
-  //     return $stmt->error;
-  //   } else if ($stmt->affected_rows <= 0) {
-  //     return "Không có sự thay đổi";
-  //   }
-  //   return true;
-  // }
-
-  // function delete($id)
-  // {
-  //   $id = intval($id);
-
-  //   $stmt = $this->db->prepare("DELETE FROM $this->table WHERE MSKH = ?");
-  //   $stmt->bind_param("i", $id);
-  //   $isSuccess = $stmt->execute();
-
-  //   if (!$isSuccess) {
-  //     return $stmt->error;
-  //   } else if ($stmt->affected_rows <= 0) {
-  //     return "Không tồn tại khách hàng ID: $id";
-  //   }
-
-  //   return true;
-  // }
-
+    if (!$isSuccess) {
+      return $stmt->error;
+    } else if ($stmt->affected_rows <= 0) {
+      return "Không có sự thay đổi";
+    }
+    return true;
+  }
 }
