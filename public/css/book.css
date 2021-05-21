@@ -68,7 +68,98 @@
   text-align: justify;
 }
 
+/* Sách theo thể loại */
+.search-book__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-book__title__more {
+  color: var(--primary-color);
+  font-family: var(--font-content);
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+}
+.search-book {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 15px 10px;
+}
+.search-book__item {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  border-radius: 25px;
+  transition: all 300ms ease-out;
+  padding: 15px;
+
+  position: relative;
+}
+.search-book__item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
+  transition: all 300ms ease-in;
+  z-index: 999;
+}
+.search-book__item:hover > .search-book__item__button {
+  opacity: 1;
+  transition: all 300ms ease-in;
+  transform: translateY(0%);
+  position: absolute;
+  display: block;
+  top: 100%;
+}
+.search-book__item > :not(:last-child) {
+  margin-bottom: 10px;
+}
+.search-book__item__image {
+  border-radius: 20px;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.075);
+}
+.search-book__item__title {
+  cursor: pointer;
+  color: var(--content-color);
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.search-book__item__price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+}
+.search-book__view-more {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+.search-book__view-more button {
+  padding: 5px 20px;
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
+  .search-book {
+    grid-template-columns: 1fr 1fr;
+  }
+  .search-book__item__image {
+    height: 230px;
+  }
   .book-detail {
     padding: 20px;
     display: flex;

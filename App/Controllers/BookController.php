@@ -14,6 +14,19 @@ class BookController extends Controller
     $data = [];
     header("Location: " . DOCUMENT_ROOT . "/home");
   }
+  function search()
+  {
+    $key = isset($_POST['key']) ? strval($_POST['key']) : "";
+    if ($key == "") {
+      header("Location: " . DOCUMENT_ROOT . "/home");
+    }
+    $data['key'] = $key;
+    $data['searchBooks'] = $this->book->search($key);
+
+    // die(var_dump($data));
+
+    $this->view("client", "books/search", $data);
+  }
   function detail($id)
   {
     $data = $this->book->getByID($id);

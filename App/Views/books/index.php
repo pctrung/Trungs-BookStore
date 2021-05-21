@@ -41,6 +41,9 @@
     <p class="book-detail__content__title">Sơ lược sách</p>
     <p class="book-detail__content__content"><?= $data['GhiChu'] ?></p>
   </div>
+
+  <h3>Bình luận</h3>
+  <div class="fb-comments" data-href="http://localhost:8080/B1809424-Trung-BookStore/book/detail/<?= $data['MSHH'] ?>" data-width="100%" data-numposts="5"></div>
 </section>
 
 <script>

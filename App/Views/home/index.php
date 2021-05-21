@@ -43,9 +43,9 @@
 
 <div class="category-book__title">
   <h3>Tất cả sách</h3>
-  <span class="category-book__title__more">
+  <!-- <span class="category-book__title__more">
     Xem thêm
-  </span>
+  </span> -->
 </div>
 <nav>
   <ul id="navCategory" class="nav">

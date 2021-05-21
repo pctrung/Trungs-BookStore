@@ -93,20 +93,24 @@ class BookModel extends Database
     return true;
   }
 
-  // function pagination($currentPage, $limit)
-  // {
-  //   $startNumber = ($currentPage - 1) * $limit;
+  function search($key = "")
+  {
+    $keySearch = "%" . $key . "%";
+    $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE TenHH like ?");
+    $stmt->bind_param("s", $keySearch);
 
-  //   $stmt = $this->db->prepare("SELECT * FROM $this->table LIMIT ?, ?");
-  //   $stmt->bind_param("ii", $startNumber, $limit);
-  //   $stmt->execute();
+    $isSuccess = $stmt->execute();
 
-  //   $result = $stmt->get_result();
+    $result = $stmt->get_result();
 
-  //   if ($result->num_rows > 0) {
-  //     return $result->fetch_all(MYSQLI_ASSOC);
-  //   } else {
-  //     return "0 results";
-  //   }
-  // }
+    // die(var_dump($result->fetch_all(MYSQLI_ASSOC)));
+
+    if ($result->num_rows > 0) {
+      return $result->fetch_all(MYSQLI_ASSOC);
+    } else if ($result->num_rows <= 0) {
+      return "Không tìm thấy kết quả liên quan: $key";
+    }
+
+    return true;
+  }
 }

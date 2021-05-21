@@ -3,9 +3,9 @@
     <a href="<?= DOCUMENT_ROOT ?>/home" class="header__logo"><img src="<?= DOCUMENT_ROOT ?>/public/img/icon.png" alt="Trung's Bookstore logo">
       <h1 class="header__name">Trung's <br> Bookstore</h1>
     </a>
-    <div class="header__search">
-      <input type="text" name="search" placeholder="Search..."><img class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
-    </div>
+    <form class="header__search" action="<?= DOCUMENT_ROOT ?>/book/search" method="post">
+      <input type="text" name="key" placeholder="Search..."><input type="image" class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
+    </form>
     <div class="header__user">
       <div class="header__user__cart">
         <a href="<?= DOCUMENT_ROOT ?>/cart"> <img src="<?= DOCUMENT_ROOT ?>/public/img/bag.svg" alt="Shopping Cart Icon"></a>
