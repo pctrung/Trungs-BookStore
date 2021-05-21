@@ -4,7 +4,7 @@
       <h1 class="header__name">Trung's <br> Bookstore</h1>
     </a>
     <form class="header__search" action="<?= DOCUMENT_ROOT ?>/book/search" method="post">
-      <input type="text" name="key" placeholder="Search..."><input type="image" class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
+      <input type="text" name="key" placeholder="Tìm kiếm..."><input type="image" class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
     </form>
     <div class="header__user">
       <div class="header__user__cart">
@@ -34,6 +34,6 @@
 
 <div id="headerMenuMobile" class="container header__menu--mobile">
   <form class="header__search" action="<?= DOCUMENT_ROOT ?>/book/search" method="post">
-    <input type="text" name="key" placeholder="Search..."><input type="image" class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
+    <input type="text" name="key" placeholder="Tìm kiếm..."><input type="image" class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
   </form>
 </div>
