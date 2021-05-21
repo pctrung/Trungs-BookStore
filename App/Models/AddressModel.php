@@ -44,11 +44,13 @@ class AddressModel extends Database
     $isSuccess = $stmt->execute();
 
     foreach ($data['DiaChi'] as $key => $address) {
-      $stmt = $this->db->prepare("INSERT INTO $this->table(MSKH, DIACHI) VALUE (?, ?)");
+      if ($address != "") {
+        $stmt = $this->db->prepare("INSERT INTO $this->table(MSKH, DIACHI) VALUE (?, ?)");
 
-      $stmt->bind_param("is", $data['MSKH'], $address);
+        $stmt->bind_param("is", $data['MSKH'], $address);
 
-      $isSuccess = $stmt->execute();
+        $isSuccess = $stmt->execute();
+      }
     }
 
     if (!$isSuccess) {
