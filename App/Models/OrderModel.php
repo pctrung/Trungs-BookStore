@@ -76,9 +76,6 @@ class OrderModel extends Database
 
   function store($data)
   {
-    // if (count($data['MSHH']) < 1) {
-    //   return "Bạn chưa chọn sản phẩm";
-    // }
     $managerStaff = $this->db->query("SELECT * FROM NHANVIEN WHERE CHUCVU = 'Quản lý'")->fetch_assoc();
     // die(var_dump($managerStaff));
     $result = "";

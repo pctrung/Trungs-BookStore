@@ -30,14 +30,6 @@ class CartController extends Controller
   }
   function checkout()
   {
-
-    if (count($_SESSION['cartDetail']['booksInCart']) < 1) {
-      $_SESSION['userAlert']['success'] = false;
-      $_SESSION['userAlert']['message'] = "Bạn chưa chọn sách";
-      header("Location:" . DOCUMENT_ROOT . "/home");
-      return;
-    }
-
     $data['address'] = $_POST['address'];
     $data["MSNV"] = "";
     $data["MSKH"] = $_SESSION['userDetail']['MSKH'];
