@@ -33,7 +33,7 @@
 </header>
 
 <div id="headerMenuMobile" class="container header__menu--mobile">
-  <div class="header__search">
-    <input type="text" name="search" placeholder="Search..."><img class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
-  </div>
+  <form class="header__search" action="<?= DOCUMENT_ROOT ?>/book/search" method="post">
+    <input type="text" name="key" placeholder="Search..."><input type="image" class="header__search__icon" src="<?= DOCUMENT_ROOT ?>/public/img/search.svg" alt="Search icon">
+  </form>
 </div>
