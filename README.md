@@ -7,6 +7,7 @@
 - CSS (Client)
 - Bootstrap (Admin)
 - MVC
+- MySQL
 
 
  
