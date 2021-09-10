@@ -1,4 +1,4 @@
-# BookStore-Website
+# Trung's BookStore
 - My project of the subject of Web Programming.
 - Technologies: PHP, CSS, MVC
  
