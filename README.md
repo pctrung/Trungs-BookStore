@@ -1,5 +1,5 @@
 # Trung's BookStore
-- My project of the subject of Web Programming
+- Projects for school subjects - Web Programming
 - Includes client site and admin site
 
 ## Tech Stack
